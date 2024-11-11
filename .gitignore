@@ -1,0 +1,18 @@
+
+
+# Docs for now
+docs/
+
+# Misc
+.editorconfig
+.DS_Store
+
+
+# DoxyFile
+Doxyfile
+Doxyfile.bak
+latex/
+html/
+
+# Data Files
+*.csv
