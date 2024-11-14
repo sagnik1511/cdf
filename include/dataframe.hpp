@@ -3,73 +3,85 @@
 
 #include <iostream>
 #include <vector>
-#include <string>
 #include <map>
-#include <set>
+#include <string>
 #include "data.hpp"
 #include "viz.hpp"
-
+#include "utils.hpp"
 
 namespace cdf {
 
-    // CDF - C++ DataFrame Class for Data Manipulation
-    class DataFrame{
-        std::vector<std::string> columns;
-        std::map<std::string, int>colNumMap;
+    class DataFrame {
+        std::vector<std::string>columns;
+        std::map<std::string, int> columnIndexMap;
         Data data;
         public:
-        std::pair<int, int> shape;
-
-        // Constructor Method
-        DataFrame(Data data = Data(0), std::vector<std::string> columns = {}) : data(data), columns(columns) {
-            shape = data.shape();
-            for(int i=0;i<columns.size();i++){
-                colNumMap[columns[i]] = i;
+        DataFrame(Data data = {}, std::vector<std::string> columns = {}) : data(data), columns(columns) {
+            columnIndexMap.clear();
+            for(int i=0; i<columns.size();i++){
+                columnIndexMap[columns[i]] = i;
             }
         };
-
-        // Prints first n rows
-        void head(int numRows = 5){
-            std::vector<Row> printable;
+        std::pair<int, int> shape(){
+            return data.shape();
+        }
+        
+        void head(int numRows=5){
+            std::vector<Row> rows;
             for(int i=0; i<numRows; i++){
-                printable.push_back(data.fetch(i));
+                rows.push_back(data[i]);
             }
-            printTable(columns, printable);
+            tabulate(columns, rows);
         }
 
-        // Prints last n rows
-        void tail(int numRows = 5){
-            std::vector<Row> printable;
-            for(int i=1; i<=numRows; i++){
-                printable.push_back(data.fetch(shape.first - i));
+        void tail(int numRows=5){
+            std::vector<Row> rows;
+            for(int i=data.size() - numRows; i<data.size(); i++){
+                rows.push_back(data[i]);
             }
-            printTable(columns, printable);
+            tabulate(columns, rows);
         }
 
-        DataFrame loc(std::string columnName, int startIdx, int endIdx){
-            if(startIdx > endIdx && startIdx < 0 && endIdx > shape.first){
-                std::cerr << "Bad indexing!" << "\n";
-                std::cout << "1\n";
-                return DataFrame();
+        const DataFrame iloc(size_t startIndex = 0, size_t endIndex = -1, std::string startColumnName = "", std::string endColumnName = "") {
+            if(startColumnName == ""){
+                startColumnName = columns[0];
             }
-            if(colNumMap.find(columnName) == colNumMap.end()){
-                std::cerr << "Column Not found!" << "\n";
-                std::cout << "2\n";
-                return DataFrame();
-            }
-            int colIdx = colNumMap[columnName];
-            std::vector<std::string> tmpCols = {columnName};
-            Data tmpData(tmpCols.size());
-            for(int i=startIdx;i<endIdx;i++){
-                //Row row = Row{data[i][colIdx]};
-                tmpData.push_back(data.fetch(i));
+            if(endColumnName == ""){
+                endColumnName = columns[columns.size()-1];
             }
 
-            return DataFrame(tmpData, tmpCols);
+            if(columnIndexMap.find(startColumnName) == columnIndexMap.end() || columnIndexMap.find(endColumnName) == columnIndexMap.end()){
+                throw std::runtime_error("Column Name Not Found!");
+            }
+
+            int startIdx = columnIndexMap[startColumnName];
+            int endIdx = columnIndexMap[endColumnName];
+
+            if(startIdx > endIdx){
+                throw std::invalid_argument("Start Column should be at lower index that End Column");
+            }
+
+            if(startIndex < 0 || endIndex >= data.size()) {
+                throw std::out_of_range("Index are out of range!");
+            }
+            Data tmpData(endIdx - startIdx + 1);
+            std::cout << startIdx << ", " << endIdx - startIdx + 1 << "\n";
+            for(int i=startIndex; i<=endIndex; i++){
+                Row _row = data[i];
+                std::vector<_cdfVal> tmpRow;
+                for(int j=startIdx; j<= endIdx; j++){
+                    tmpRow.push_back(_row[j]);
+                }
+                Row newRow(tmpRow);
+                tmpData.push_back(newRow);
+            }
+
+            return DataFrame(tmpData, slice(columns, startIdx, endIdx - startIdx + 1));
+            
         }
-
 
     };
 
 }
+
 #endif

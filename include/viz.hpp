@@ -2,106 +2,84 @@
 #define VIZ_HPP
 
 #include <iostream>
-#include <iomanip>
 #include <vector>
-#include <string>
-#include <variant>
-#include <algorithm>
 #include <sstream>
-#include "dtypes.hpp"
+
+#include <algorithm>
 #include "data.hpp"
 
+namespace cdf {
 
-namespace cdf{
-    // Function to calculate the string length of a variant (for column width calculation)
-    size_t variantSize(const _value& var) {
-        return std::visit([](auto&& value) -> size_t {
-            if constexpr (std::is_same_v<std::decay_t<decltype(value)>, std::string>) {
-                return value.length();
-            } else {
-                return std::to_string(value).length();
-            }
+    // Converts variant objects to string objects
+    std::string toString(const _cdfVal& var){
+        return std::visit([] (const auto& value) -> std::string {
+            std::ostringstream oss;
+            oss << value;
+            return oss.str();
         }, var);
     }
 
-    // Function to calculate maximum column width for each column in the table
-    std::vector<size_t> calculateColumnWidths(const std::vector<std::string>& header, const std::vector<Row>& table) {
-        std::vector<size_t> columnWidths(header.size(), 0);
+    // Finds maximum length of the character on each column
+    std::vector<size_t> findMaxLength(std::vector<std::string> headers, std::vector<Row> rows){
+        std::vector<size_t>maxLen(headers.size(), 0);
 
-        // Calculate widths based on header
-        for (size_t i = 0; i < header.size(); ++i) {
-            columnWidths[i] = header[i].length();
-        }
-
-        // Calculate widths based on table data
-        for (const auto& row : table) {
-            for (size_t i = 0; i < row.row.size(); ++i) {
-                size_t cellWidth = variantSize(row[i]);
-                columnWidths[i] = std::max(columnWidths[i], cellWidth);
+        for(int i=0; i<headers.size(); i++){
+            maxLen[i] = std::max(maxLen[i], headers[i].size());
+            for(auto& row : rows){
+                maxLen[i] = std::max(maxLen[i], toString(row[i]).size());
             }
         }
 
-        return columnWidths;
-    }
+        return maxLen;
+    };
 
-    // Function to print a horizontal border based on column widths
-    void printHorizontalBorder(const std::vector<size_t>& columnWidths) {
+    // Prints a horizontal line based on the padding
+    void addHorizontalLine(std::vector<size_t> width){
         std::cout << "+";
-        for (size_t width : columnWidths) {
-            std::cout << std::string(width + 2, '-') << "+";
-        }
-        std::cout << "\n";
-    }
-
-    // Function to print the header row
-    void printHeader(const std::vector<std::string>& header, const std::vector<size_t>& columnWidths) {
-        std::cout << "|";
-        for (size_t i = 0; i < header.size(); ++i) {
-            std::cout << " " << std::left << std::setw(columnWidths[i]) << header[i] << " |";
-        }
-        std::cout << "\n";
-    }
-
-    // Function to print each data row in the table
-    void printRow(const std::vector<_value>& row, const std::vector<size_t>& columnWidths) {
-        std::cout << "|";
-        for (size_t i = 0; i < row.size(); ++i) {
-            std::visit([&](auto&& value) {
-                std::cout << " " << std::left << std::setw(columnWidths[i]);
-                if constexpr (std::is_same_v<std::decay_t<decltype(value)>, std::string>) {
-                    std::cout << value;
-                } else {
-                    std::cout << std::to_string(value);
-                }
-                std::cout << " |";
-            }, row[i]);
-        }
-        std::cout << "\n";
-    }
-
-    // Function to print the full table with pretty CLI formatting
-    void printTable(const std::vector<std::string>& header, const std::vector<Row>& table) {
-        if (table.empty()) return;
-
-        // Calculate column widths
-        std::vector<size_t> columnWidths = calculateColumnWidths(header, table);
-
-        // Print the top border
-        printHorizontalBorder(columnWidths);
-
-        // Print header
-        printHeader(header, columnWidths);
-        printHorizontalBorder(columnWidths);  // Separator between header and data
-
-        // Print each row with borders and alignment
-        for (const auto& row : table) {
-            printRow(row.row, columnWidths);
-            printHorizontalBorder(columnWidths);  // Print a border after each row
-        }
-    }
+        for(int i=0; i < width.size(); i++){
+            std::cout << std::string(width[i] + 2, '-');
+            std::cout << "+";
+        }std::cout << "\n";
+    };
     
+
+    // prints each dataframe row
+    void printRow(Row row, std::vector<size_t> width){
+        std::cout << "|";
+        for(int i=0;i <row.size(); i++){
+            std::string strValue = toString(row[i]);
+            std::cout << " ";
+            std::cout << strValue;
+            std::cout << std::string(width[i] - strValue.size(), ' ');
+            std::cout << " |";
+        }
+        std::cout << "\n";
+    };
+
+    // Prints a whole dataframe view on CLI
+    void tabulate(std::vector<std::string> headers, std::vector<Row> rows){
+        
+        std::vector<size_t> maxLen = findMaxLength(headers, rows);
+
+        addHorizontalLine(maxLen);
+
+        // Add Header Row
+        std::cout << "|";
+        for(int i=0; i< headers.size(); i++){
+            std::cout << " ";
+            std::cout << headers[i];
+            std::cout << std::string(maxLen[i] - headers[i].size(), ' ');
+            std::cout << " |";
+        }std::cout << "\n";
+        addHorizontalLine(maxLen);
+
+        // Data
+        for(auto& row : rows){
+            printRow(row, maxLen);
+            addHorizontalLine(maxLen);
+        }
+
+    };
 }
-
-
 
 #endif

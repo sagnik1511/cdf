@@ -16,3 +16,8 @@ html/
 
 # Data Files
 *.csv
+
+
+# GraveYard
+dumps/
+bin/

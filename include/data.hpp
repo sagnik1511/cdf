@@ -1,105 +1,72 @@
 #ifndef DATA_HPP
 #define DATA_HPP
 
-#include<iostream>
-#include<vector>
-#include<map>
-#include<set>
-#include "utils.hpp"
+#include <vector>
 #include "dtypes.hpp"
 
-namespace cdf {
+namespace cdf{
 
-    // Row Class
-    // Abstracted class for row-wise manipulation of data
     class Row{
-
+        std::vector<_cdfVal> _row;
         public:
-        std::vector<_value> row;
 
-        // Constructor Method
-        Row(std::vector<std::string> inputVector = {}) {
-            for(auto &el : inputVector){
-                row.push_back(_value(el));
+        template<typename T>
+        Row(std::vector<T> inputRow){
+            for(auto &it : inputRow){
+                _row.push_back(it);
             }
-        };
+        }
 
-        // Size of the Row
         size_t size(){
-            return row.size();
+            return _row.size();
         }
 
-        // Overload operator[] for non-const access
-        _value& operator[](size_t index) {
-            if (index >= row.size()) {
-                throw std::out_of_range("Index out of range");
+        const _cdfVal& operator[] (size_t index) const {
+            if(index >= _row.size()) {
+                throw std::out_of_range("Index out of range!");
             }
-            return row[index];
+            return _row[index];
         }
-
-        // Overload operator[] for const access
-        const _value& operator[](size_t index) const {
-            if (index >= row.size()) {
-                throw std::out_of_range("Index out of range");
-            }
-            return row[index];
-        }
-        auto begin() { return row.begin(); }
-        auto end() { return row.end(); }
-        auto begin() const { return row.begin(); }
-        auto end() const { return row.end(); }
-
     };
 
-    // Data Class
-    // Storage class of dataframe. Abstracts basic data reading and manipulation
+
     class Data{
-        int numValuesPerRow;
-        std::map<int, Row> _data;
-        int numRows = 0;
-
+        std::vector<Row> _data;
         public:
-
-        // Constructor Method
-        Data(int rowLength = 0): numValuesPerRow(rowLength) {
-            numRows = 0;
-            _data.clear();
+        int rowN, colN;
+        Data(int rowLength = 0){
+            rowN = 0;
+            colN = rowLength;
         }
 
-        // // Overload operator[] for non-const access
-        // Row& operator[](size_t index) {
-        //     if (index >= _data.size()) {
-        //         throw std::out_of_range("Index out of range");
-        //     }
-        //     return _data[index];
-        // }
-
-        // // Overload operator[] for const access
-        // const Row& operator[](size_t index) const {
-        //     if (index >= _data.size()) {
-        //         throw std::out_of_range("Index out of range");
-        //     }
-        //     return _data[index];
-        // }
-
-        // Fetch row by Index
-        Row fetch(int rowIndex){
-            return _data[rowIndex];
+        size_t size(){
+            return rowN;
         }
         
-        // Add new entry to data
-        void push_back(Row row){
-            if(row.size() == numValuesPerRow) {
-                _data[numRows++] = row;
+        std::pair<int, int> shape(){
+            return std::make_pair(rowN, colN);
+        }
+
+        const Row& operator[](size_t index) const {
+            if(index >= _data.size()) {
+                throw std::out_of_range("Index out of range!");
+            }
+            return _data[index];
+        }
+
+        void push_back(Row &row){
+            if(row.size() == colN){
+                _data.push_back(row);
+                ++rowN;
+            }
+            else{
+                std::cout << "Row Size: " << row.size() << " Column Size: " << colN << "\n";
+                throw std::length_error("Row size not matching with column size");
             }
         }
-
-        // Shape of the data inserted
-        std::pair <int, int>shape() const{
-            return {numRows, numValuesPerRow};
-        }
-
     };
+
+
 }
 
 
