@@ -1,8 +1,4 @@
 
-
-# Docs for now
-docs/
-
 # Misc
 .editorconfig
 .DS_Store
@@ -12,6 +8,7 @@ docs/
 Doxyfile
 Doxyfile.bak
 latex/
+html/
 
 # Data Files
 *.csv
