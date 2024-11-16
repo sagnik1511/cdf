@@ -12,7 +12,6 @@ docs/
 Doxyfile
 Doxyfile.bak
 latex/
-html/
 
 # Data Files
 *.csv
