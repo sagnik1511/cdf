@@ -3,9 +3,6 @@
 
 #include <variant>
 
-using _cdfVal = std::variant<char, std::string, int, double>;
-
-
-
+using _cdfVal = std::variant<std::string, int, double>;
 
 #endif
