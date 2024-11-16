@@ -2,17 +2,14 @@
 #include "include/cdf.hpp"
 
 int main() {
-    cdf::DataFrame df = cdf::io::read_csv("/Users/tensored/cdf/iris.csv");
+    cdf::DataFrame df = cdf::io::read_csv("/Users/tensored/cdf/titanic.csv");
     std::cout << df.shape().first << ", " << df.shape().second << "\n";
+
     df.head();
 
-    cdf::DataFrame newDf = df.iloc(1, 17, "", "petal.length");
+    cdf::DataFrame newDf = df.iloc(1, 10, "", "Fare");
 
-    newDf.head(15);
-
-    float x = 3.7;
-
-    newDf = newDf[newDf["sepal.width"] == x];
+    newDf = newDf[newDf["Fare"] > 30.0];
 
     newDf.head();
 

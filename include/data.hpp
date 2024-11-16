@@ -233,7 +233,7 @@ class Data {
             _data.push_back(row);
             ++rowN;
         } else {
-            std::cout << "Row Size: " << row.size() << " Column Size: " << colN << "\n";
+            std::cout << "[Data][push_back] Expected " << colN << " columns, found " << row.size() << "\n";
             throw std::length_error("Row size not matching with column size");
         }
     }

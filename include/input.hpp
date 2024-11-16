@@ -49,6 +49,8 @@ DataFrame read_csv(std::string csvFilePath, char delimiter = ',', int header = 0
     std::string line;
     int currIdx = 0;
 
+    bool inQuotes = false;
+    std::string quotedString = "";
     // Read the file line by line
     while (std::getline(csvFile, line)) {
         if (currIdx == header) {
@@ -65,9 +67,35 @@ DataFrame read_csv(std::string csvFilePath, char delimiter = ',', int header = 0
             std::stringstream rowStream(line);
             std::vector<_cdfVal> cacheRow;
             while (std::getline(rowStream, val, delimiter)) {
-                cacheRow.push_back(inferAndConvert(val));
+                // Handling added whenever any value of the CSV file carries ',' character
+                // Whenever a field value contains ',', the field is contained with ""
+                // So, whenever a quted character is found, we concatenate the responses from the
+                // string split responses until end quote comes
+                if (val[0] == '"' && val[val.size() - 1] != '"') {
+                    inQuotes = true;
+                    quotedString += val.substr(1);
+                } else if (inQuotes) {
+                    quotedString += "," + val;
+                    if (val[val.size() - 1] == '"') {
+                        inQuotes = false;
+                        val = quotedString.substr(0, quotedString.size() - 1);
+                        quotedString = "";
+                    }
+                }
+
+                if (!inQuotes) {
+                    cacheRow.push_back(inferAndConvert(val));
+                }
+            }
+            if (line[line.size() - 1] == ',') {
+                cacheRow.push_back("");
             }
             Row row = Row(cacheRow);
+            if (cacheRow.size() == 11) {
+                for (auto& el : cacheRow) {
+                    std::cout << toString(el) << " " << "\n";
+                }
+            }
             data.push_back(row);
         }
         ++currIdx;
