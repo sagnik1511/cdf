@@ -39,13 +39,13 @@ std::vector<T> slice(const std::vector<T>& vec, int start, int end) {
  * @param field The input string to infer and convert.
  * @return The inferred and converted `_cdfVal` type, which can be an integer, double, or string.
  */
-_cdfVal inferAndConvert(const std::string& field) {
+std::pair<int, _cdfVal> inferAndConvert(const std::string& field) {
     // Try to convert to int
     try {
         size_t pos;
         int intValue = std::stoi(field, &pos);
         if (pos == field.size()) {  // Successful int conversion
-            return intValue;
+            return std::make_pair(0, intValue);
         }
     } catch (...) {
     }
@@ -55,13 +55,13 @@ _cdfVal inferAndConvert(const std::string& field) {
         size_t pos;
         double doubleValue = std::stod(field, &pos);
         if (pos == field.size()) {  // Successful double conversion
-            return doubleValue;
+            return std::make_pair(1, doubleValue);
         }
     } catch (...) {
     }
 
     // If conversion to int or double failed, treat as a string
-    return field;
+    return std::make_pair(2, field);
 }
 
 #endif

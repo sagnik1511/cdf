@@ -78,12 +78,12 @@ class Series {
     bool compareVariant(const T& rowVal, const U& value, const std::function<bool(const U&, const U&)>& op) const {
         if constexpr (std::is_same_v<T, _cdfVal>) {
             if (std::holds_alternative<int>(rowVal)) {
-                return op(std::get<int>(rowVal), value);
+                return op(std::get<int>(rowVal), static_cast<int>(value));
             } else if (std::holds_alternative<double>(rowVal)) {
-                return op(std::get<double>(rowVal), value);
+                return op(std::get<double>(rowVal), static_cast<double>(value));
             } else if (std::holds_alternative<std::string>(rowVal)) {
                 if constexpr (std::is_same_v<U, std::string>) {
-                    return op(std::get<std::string>(rowVal), value);
+                    return op(std::get<std::string>(rowVal), static_cast<std::string>(value));
                 } else {
                     return false;  // Cannot compare string with non-string
                 }
@@ -109,7 +109,7 @@ class Series {
             if constexpr (std::is_same_v<T, _cdfVal>) {
                 truth.push_back(compareVariant(rowVal, value, op));
             } else {
-                truth.push_back(op(static_cast<U>(rowVal), value));
+                truth.push_back(op(rowVal, static_cast<T>(value)));
             }
         }
         return truth;
@@ -236,6 +236,17 @@ class Data {
             std::cout << "[Data][push_back] Expected " << colN << " columns, found " << row.size() << "\n";
             throw std::length_error("Row size not matching with column size");
         }
+    }
+
+    /**
+     * @brief Adds a new row to teh dataset.
+     *
+     * @param row (Vector of _cdfVal) The row to add.
+     * @throws std::length_error if the size of the row does not match the number of columns.
+     */
+    void push_back(std::vector<_cdfVal>& row) {
+        Row _row = Row(row);
+        push_back(_row);
     }
 };
 }  // namespace cdf

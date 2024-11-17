@@ -136,12 +136,12 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">bool</span> compareVariant(<span class="keyword">const</span> T&amp; rowVal, <span class="keyword">const</span> U&amp; value, <span class="keyword">const</span> std::function&lt;<span class="keywordtype">bool</span>(<span class="keyword">const</span> U&amp;, <span class="keyword">const</span> U&amp;)&gt;&amp; op)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, _cdfVal&gt;) {</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordflow">if</span> (std::holds_alternative&lt;int&gt;(rowVal)) {</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                <span class="keywordflow">return</span> op(std::get&lt;int&gt;(rowVal), value);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                <span class="keywordflow">return</span> op(std::get&lt;int&gt;(rowVal), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(value));</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::holds_alternative&lt;double&gt;(rowVal)) {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                <span class="keywordflow">return</span> op(std::get&lt;double&gt;(rowVal), value);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                <span class="keywordflow">return</span> op(std::get&lt;double&gt;(rowVal), <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(value));</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::holds_alternative&lt;std::string&gt;(rowVal)) {</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;U, std::string&gt;) {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                    <span class="keywordflow">return</span> op(std::get&lt;std::string&gt;(rowVal), value);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                    <span class="keywordflow">return</span> op(std::get&lt;std::string&gt;(rowVal), <span class="keyword">static_cast&lt;</span>std::string<span class="keyword">&gt;</span>(value));</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;  <span class="comment">// Cannot compare string with non-string</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                }</div>
@@ -157,7 +157,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, _cdfVal&gt;) {</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                truth.push_back(compareVariant(rowVal, value, op));</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                truth.push_back(op(<span class="keyword">static_cast&lt;</span>U<span class="keyword">&gt;</span>(rowVal), value));</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                truth.push_back(op(rowVal, <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(value)));</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            }</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        }</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">return</span> truth;</div>
@@ -246,17 +246,25 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        }</div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    }</div>
 </div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>};</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
+<div class="foldopen" id="foldopen00247" data-start="{" data-end="}">
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="classcdf_1_1_data.html#ad316aba8c3a5aef0be337bced1c1978e">  247</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classcdf_1_1_data.html#ad316aba8c3a5aef0be337bced1c1978e">push_back</a>(std::vector&lt;_cdfVal&gt;&amp; row) {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <a class="code hl_class" href="classcdf_1_1_row.html">Row</a> _row = <a class="code hl_class" href="classcdf_1_1_row.html">Row</a>(row);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <a class="code hl_function" href="classcdf_1_1_data.html#a06c8df4af17a6529757a0ab2346fdada">push_back</a>(_row);</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    }</div>
 </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>}  <span class="comment">// namespace cdf</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>};</div>
+</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>}  <span class="comment">// namespace cdf</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclasscdf_1_1_data_html"><div class="ttname"><a href="classcdf_1_1_data.html">cdf::Data</a></div><div class="ttdoc">Represents a collection of rows of data, akin to a 2D matrix or dataframe.</div><div class="ttdef"><b>Definition</b> data.hpp:181</div></div>
 <div class="ttc" id="aclasscdf_1_1_data_html_a06c8df4af17a6529757a0ab2346fdada"><div class="ttname"><a href="classcdf_1_1_data.html#a06c8df4af17a6529757a0ab2346fdada">cdf::Data::push_back</a></div><div class="ttdeci">void push_back(Row &amp;row)</div><div class="ttdoc">Adds a new row to the dataset.</div><div class="ttdef"><b>Definition</b> data.hpp:231</div></div>
 <div class="ttc" id="aclasscdf_1_1_data_html_a4f5df3cbd897e74bf31aba899847fe42"><div class="ttname"><a href="classcdf_1_1_data.html#a4f5df3cbd897e74bf31aba899847fe42">cdf::Data::operator[]</a></div><div class="ttdeci">const Row &amp; operator[](size_t index) const</div><div class="ttdoc">Accesses the row at the specified index.</div><div class="ttdef"><b>Definition</b> data.hpp:218</div></div>
 <div class="ttc" id="aclasscdf_1_1_data_html_a57fde04f1bab17474a003e76b5a4ef0a"><div class="ttname"><a href="classcdf_1_1_data.html#a57fde04f1bab17474a003e76b5a4ef0a">cdf::Data::shape</a></div><div class="ttdeci">std::pair&lt; int, int &gt; shape()</div><div class="ttdoc">Returns the shape of the dataset as a pair of (rows, columns).</div><div class="ttdef"><b>Definition</b> data.hpp:209</div></div>
 <div class="ttc" id="aclasscdf_1_1_data_html_a9337b100fe827a4f25ae9ea7fc096e02"><div class="ttname"><a href="classcdf_1_1_data.html#a9337b100fe827a4f25ae9ea7fc096e02">cdf::Data::Data</a></div><div class="ttdeci">Data(int rowLength=0)</div><div class="ttdoc">Constructs a Data object with a specified number of columns.</div><div class="ttdef"><b>Definition</b> data.hpp:192</div></div>
 <div class="ttc" id="aclasscdf_1_1_data_html_aa41e097bdcbc4eec1da76979aa43f330"><div class="ttname"><a href="classcdf_1_1_data.html#aa41e097bdcbc4eec1da76979aa43f330">cdf::Data::size</a></div><div class="ttdeci">size_t size()</div><div class="ttdoc">Returns the number of rows in the data.</div><div class="ttdef"><b>Definition</b> data.hpp:202</div></div>
+<div class="ttc" id="aclasscdf_1_1_data_html_ad316aba8c3a5aef0be337bced1c1978e"><div class="ttname"><a href="classcdf_1_1_data.html#ad316aba8c3a5aef0be337bced1c1978e">cdf::Data::push_back</a></div><div class="ttdeci">void push_back(std::vector&lt; _cdfVal &gt; &amp;row)</div><div class="ttdoc">Adds a new row to teh dataset.</div><div class="ttdef"><b>Definition</b> data.hpp:247</div></div>
 <div class="ttc" id="aclasscdf_1_1_row_html"><div class="ttname"><a href="classcdf_1_1_row.html">cdf::Row</a></div><div class="ttdoc">Represents a single row of data.</div><div class="ttdef"><b>Definition</b> data.hpp:16</div></div>
 <div class="ttc" id="aclasscdf_1_1_row_html_a41e2efe53c3fa901b36b5063ba7a3b01"><div class="ttname"><a href="classcdf_1_1_row.html#a41e2efe53c3fa901b36b5063ba7a3b01">cdf::Row::size</a></div><div class="ttdeci">size_t size()</div><div class="ttdoc">Returns the size of the row.</div><div class="ttdef"><b>Definition</b> data.hpp:37</div></div>
 <div class="ttc" id="aclasscdf_1_1_row_html_a5c4269b9be156443c9cadcaa892b7f9b"><div class="ttname"><a href="classcdf_1_1_row.html#a5c4269b9be156443c9cadcaa892b7f9b">cdf::Row::Row</a></div><div class="ttdeci">Row(std::vector&lt; T &gt; inputRow)</div><div class="ttdoc">Constructs a Row object from a vector of data.</div><div class="ttdef"><b>Definition</b> data.hpp:26</div></div>

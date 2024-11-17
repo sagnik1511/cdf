@@ -2,16 +2,14 @@
 #include "include/cdf.hpp"
 
 int main() {
+    // Load the dataframe from CSV File
     cdf::DataFrame df = cdf::io::read_csv("/Users/tensored/cdf/titanic.csv");
-    std::cout << df.shape().first << ", " << df.shape().second << "\n";
 
+    // Perform filtration
+    df = df[df["Age"] == 35];
+
+    // Print the head of the dataframe
     df.head();
-
-    cdf::DataFrame newDf = df.iloc(1, 10, "", "Fare");
-
-    newDf = newDf[newDf["Fare"] > 30.0];
-
-    newDf.head();
 
     return 0;
 }

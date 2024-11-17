@@ -118,6 +118,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a06c8df4af17a6529757a0ab2346fdada" id="r_a06c8df4af17a6529757a0ab2346fdada"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06c8df4af17a6529757a0ab2346fdada">push_back</a> (<a class="el" href="classcdf_1_1_row.html">Row</a> &amp;row)</td></tr>
 <tr class="memdesc:a06c8df4af17a6529757a0ab2346fdada"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new row to the dataset.  <br /></td></tr>
 <tr class="separator:a06c8df4af17a6529757a0ab2346fdada"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad316aba8c3a5aef0be337bced1c1978e" id="r_ad316aba8c3a5aef0be337bced1c1978e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad316aba8c3a5aef0be337bced1c1978e">push_back</a> (std::vector&lt; _cdfVal &gt; &amp;row)</td></tr>
+<tr class="memdesc:ad316aba8c3a5aef0be337bced1c1978e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new row to teh dataset.  <br /></td></tr>
+<tr class="separator:ad316aba8c3a5aef0be337bced1c1978e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -207,7 +210,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>colN</b></td></tr>
 </div>
 </div>
 <a id="a06c8df4af17a6529757a0ab2346fdada" name="a06c8df4af17a6529757a0ab2346fdada"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06c8df4af17a6529757a0ab2346fdada">&#9670;&#160;</a></span>push_back()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a06c8df4af17a6529757a0ab2346fdada">&#9670;&#160;</a></span>push_back() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -233,6 +236,45 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>colN</b></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">row</td><td>The row to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::length_error</td><td>if the size of the row does not match the number of columns. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad316aba8c3a5aef0be337bced1c1978e" name="ad316aba8c3a5aef0be337bced1c1978e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad316aba8c3a5aef0be337bced1c1978e">&#9670;&#160;</a></span>push_back() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cdf::Data::push_back </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; _cdfVal &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>row</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a new row to teh dataset. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>(Vector of _cdfVal) The row to add. </td></tr>
   </table>
   </dd>
 </dl>
