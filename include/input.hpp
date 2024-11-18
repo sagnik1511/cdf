@@ -155,6 +155,7 @@ DataFrame read_csv_old(std::string csvFilePath, char delimiter = ',', int header
  */
 DataFrame read_csv(std::string csvFilePath, char delimiter = ',', int header = 0, std::vector<std::string> names = {}) {
     int numColumns;
+    NaN nan = NaN();
     // Store a cache loading the field values before going for type-conversion
     std::vector<std::vector<std::string>> cache;
 
@@ -216,25 +217,21 @@ DataFrame read_csv(std::string csvFilePath, char delimiter = ',', int header = 0
                     }
                 }
                 if (!inQuotes) {
-                    if (val == "") {
-                        val = "NaN";
-                    }
                     rowVector.push_back(val);
 
-                    // Updating Data Type if current data type doesn't matches with returned response
-                    // Priority of the data-types -> string > double > int
-                    std::pair<int, _cdfVal> inferredData = inferAndConvert(val);
-                    if (fieldTypes[rowVector.size() - 1] < inferredData.first) {
-                        fieldTypes[rowVector.size() - 1] = inferredData.first;
+                    if (val != "") {
+                        // Updating Data Type if current data type doesn't matches with returned response
+                        // Priority of the data-types -> string > double > int
+                        std::pair<int, _cdfVal> inferredData = inferAndConvert(val);
+                        if (fieldTypes[rowVector.size() - 1] < inferredData.first) {
+                            fieldTypes[rowVector.size() - 1] = inferredData.first;
+                        }
                     }
                 }
             }
             if (line[line.size() - 1] == ',') {
-                val = "NaN";
+                val = "";
                 rowVector.push_back(val);
-                if (fieldTypes[rowVector.size() - 1] < 2) {
-                    fieldTypes[rowVector.size() - 1] = 2;
-                }
             }
             cache.push_back(rowVector);
         }
@@ -252,14 +249,17 @@ DataFrame read_csv(std::string csvFilePath, char delimiter = ',', int header = 0
     for (int i = 0; i < cache.size(); i++) {
         std::vector<_cdfVal> cacheRow;
         for (int j = 0; j < headers.size(); j++) {
-            if (fieldTypes[j] == 0) {
-                // Int conversion
+            if (cache[i][j] == "") {
+                // Pushing nan in place of blank string
+                cacheRow.push_back(nan);
+            } else if (fieldTypes[j] == 0) {
+                // Integer Conversion
                 cacheRow.push_back(std::stoi(cache[i][j]));
             } else if (fieldTypes[j] == 1) {
                 // Double Conversion
                 cacheRow.push_back(std::stod(cache[i][j]));
             } else if (fieldTypes[j] == 2) {
-                // String, no conversion
+                // String, No Conversion
                 cacheRow.push_back(cache[i][j]);
             }
         }
