@@ -74,7 +74,7 @@ class DataFrame {
      * @brief Returns Series object holidng column values
      * @param columnName The name of the corresponding column
      */
-    Series<_cdfVal> operator[](std::string columnName) {
+    Series operator[](std::string columnName) {
         if (columnIndexMap.find(columnName) == columnIndexMap.end()) {
             throw std::invalid_argument("Column Not present");
         }

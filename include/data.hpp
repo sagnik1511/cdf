@@ -52,67 +52,128 @@ class Row {
 };
 
 /**
- * @brief Represents a series of data values.
+ * @class Series
+ * @brief A class that represents a series of heterogeneous data values and provides comparison utilities.
  *
- * The Series class is a container for a sequence of data points of type `T` and supports element-wise comparison
- * with values of another type `U` using overloaded comparison operators.
- *
- * @tparam T The data type of the series elements.
+ * The Series class stores a sequence of values of type `_cdfVal` (which can hold multiple types, such as int, double,
+ * or std::string) and allows comparisons between the series elements and a provided value using standard comparison
+ * operators (e.g., ==, <, <=, >, >=, !=).
  */
-template <typename T>
 class Series {
-    std::vector<T> series;
+    std::vector<_cdfVal> series;
 
     /**
-     * @brief Compares an element with a value using a specified operation.
+     * @brief Compares each string representation of elements in the series with a given string using a custom
+     * comparator.
      *
-     * Handles cases where `T` is a variant type and determines the correct type-based comparison.
-     *
-     * @tparam U The type of the value to compare against.
-     * @param rowVal The element of the series to compare.
-     * @param value The value to compare with.
-     * @param op The comparison operation as a lambda function.
-     * @return The result of the comparison.
+     * @tparam Comparator The type of the comparator function.
+     * @param val The string value to compare against.
+     * @param op The comparator function to use for the comparison.
+     * @return A vector of boolean values indicating the result of the comparison for each element in the series.
      */
-    template <typename U>
-    bool compareVariant(const T& rowVal, const U& value, const std::function<bool(const U&, const U&)>& op) const {
-        if constexpr (std::is_same_v<T, _cdfVal>) {
-            if (std::holds_alternative<int>(rowVal)) {
-                return op(std::get<int>(rowVal), static_cast<int>(value));
-            } else if (std::holds_alternative<double>(rowVal)) {
-                return op(std::get<double>(rowVal), static_cast<double>(value));
-            } else if (std::holds_alternative<std::string>(rowVal)) {
-                if constexpr (std::is_same_v<U, std::string>) {
-                    return op(std::get<std::string>(rowVal), static_cast<std::string>(value));
-                } else {
-                    return false;  // Cannot compare string with non-string
-                }
-            }
+    template <typename Comparator>
+    std::vector<bool> compareString(const std::string& val, const Comparator& op) const {
+        std::vector<bool> truth;
+        for (const auto& rowVal : series) {
+            truth.push_back(std::visit(
+                [&](const auto& v) -> bool {
+                    using T = std::decay_t<decltype(v)>;
+                    if constexpr (std::is_same_v<T, int>) {
+                        return op(std::to_string(v), val);
+                    } else if constexpr (std::is_same_v<T, double>) {
+                        return op(std::to_string(v), val);
+                    } else if constexpr (std::is_same_v<T, std::string>) {
+                        return op(v, val);
+                    } else {
+                        return false;  // Handle cdf::NaN or mismatched types
+                    }
+                },
+                rowVal));
         }
-        return false;  // Default for non-variant types
+        return truth;
     }
 
     /**
-     * @brief Generic comparison function for the series.
+     * @brief Compares each integer element in the series with a given integer using a custom comparator.
      *
-     * Iterates through the series and applies the given comparison operation.
-     *
-     * @tparam U The type of the value to compare against.
-     * @param value The value to compare each series element with.
-     * @param op The comparison operation as a lambda function.
-     * @return A vector of booleans indicating the result of the comparison for each element in the series.
+     * @tparam Comparator The type of the comparator function.
+     * @param val The integer value to compare against.
+     * @param op The comparator function to use for the comparison.
+     * @return A vector of boolean values indicating the result of the comparison for each element in the series.
      */
-    template <typename U>
-    std::vector<bool> compare(const U& value, const std::function<bool(const U&, const U&)>& op) const {
+    template <typename Comparator>
+    std::vector<bool> compareInt(int val, const Comparator& op) const {
         std::vector<bool> truth;
         for (const auto& rowVal : series) {
-            if constexpr (std::is_same_v<T, _cdfVal>) {
-                truth.push_back(compareVariant(rowVal, value, op));
-            } else {
-                truth.push_back(op(rowVal, static_cast<T>(value)));
-            }
+            truth.push_back(std::visit(
+                [&](const auto& v) -> bool {
+                    using T = std::decay_t<decltype(v)>;
+                    if constexpr (std::is_same_v<T, int>) {
+                        return op(v, val);
+                    } else if constexpr (std::is_same_v<T, double>) {
+                        return op(v, static_cast<double>(val));
+                    } else {
+                        return false;  // Handle cdf::NaN, strings, or mismatched types
+                    }
+                },
+                rowVal));
         }
         return truth;
+    }
+
+    /**
+     * @brief Compares each double element in the series with a given double using a custom comparator.
+     *
+     * @tparam Comparator The type of the comparator function.
+     * @param val The double value to compare against.
+     * @param op The comparator function to use for the comparison.
+     * @return A vector of boolean values indicating the result of the comparison for each element in the series.
+     */
+    template <typename Comparator>
+    std::vector<bool> compareDouble(double val, const Comparator& op) const {
+        std::vector<bool> truth;
+        for (const auto& rowVal : series) {
+            truth.push_back(std::visit(
+                [&](const auto& v) -> bool {
+                    using T = std::decay_t<decltype(v)>;
+                    if constexpr (std::is_same_v<T, double>) {
+                        return op(v, val);
+                    } else if constexpr (std::is_same_v<T, int>) {
+                        return op(static_cast<double>(v), val);
+                    } else {
+                        return false;  // Handle cdf::NaN, strings, or mismatched types
+                    }
+                },
+                rowVal));
+        }
+        return truth;
+    }
+
+    /**
+     * @brief Compares elements in the series with a given value using a custom comparator.
+     *
+     * This method routes to the appropriate compare function (compareString, compareInt, or compareDouble) based on
+     * the type of the provided value.
+     *
+     * @tparam T The type of the value to compare.
+     * @tparam Comparator The type of the comparator function.
+     * @param value The value to compare against.
+     * @param op The comparator function to use for the comparison.
+     * @return A vector of boolean values indicating the result of the comparison for each element in the series.
+     */
+    template <typename T, typename Comparator>
+    std::vector<bool> compare(const T& value, const Comparator& op) {
+        if constexpr (std::is_same_v<T, std::string>) {
+            return compareString(value, op);
+        } else if constexpr (std::is_same_v<T, int>) {
+            return compareInt(value, op);
+        } else if constexpr (std::is_same_v<T, double>) {
+            return compareDouble(value, op);
+        } else {
+            std::cout << "Unknown data-type found\n";
+            std::vector<bool> truth(series.size(), false);
+            return truth;
+        }
     }
 
    public:
@@ -121,54 +182,92 @@ class Series {
      *
      * @param series A vector of data values to populate the series with.
      */
-    Series(std::vector<T> series) : series(series) {};
+    Series(std::vector<_cdfVal> series) : series(series) {};
 
     /**
-     * @brief Compares each element in the series with a value using the less-than operator.
+     * @brief Equality comparison operator.
+     *
+     * Compares each element in the series with a provided value for equality.
+     *
+     * @tparam T The type of the value to compare.
+     * @param value The value to compare against.
+     * @return A vector of boolean values indicating equality for each element in the series.
      */
-    template <typename U>
-    std::vector<bool> operator<(const U& value) const {
-        return compare<U>(value, [](const U& a, const U& b) { return a < b; });
+    template <typename T>
+    std::vector<bool> operator==(const T& value) {
+        return compare(value, std::equal_to<>{});
     }
 
     /**
-     * @brief Compares each element in the series with a value using the greater-than operator.
+     * @brief Not-equal-to comparison operator.
+     *
+     * Compares each element in the series with a provided value for inequality.
+     *
+     * @tparam T The type of the value to compare.
+     * @param value The value to compare against.
+     * @return A vector of boolean values indicating inequality for each element in the series.
      */
-    template <typename U>
-    std::vector<bool> operator>(const U& value) const {
-        return compare<U>(value, [](const U& a, const U& b) { return a > b; });
+    template <typename T>
+    std::vector<bool> operator!=(const T& value) {
+        return compare(value, std::not_equal_to<>{});
     }
 
     /**
-     * @brief Compares each element in the series with a value using the less-than-or-equal-to operator.
+     * @brief Less-than comparison operator.
+     *
+     * Compares each element in the series with a provided value for "less than".
+     *
+     * @tparam T The type of the value to compare.
+     * @param value The value to compare against.
+     * @return A vector of boolean values indicating the result of "less than" for each element in the series.
      */
-    template <typename U>
-    std::vector<bool> operator<=(const U& value) const {
-        return compare<U>(value, [](const U& a, const U& b) { return a <= b; });
+    template <typename T>
+    std::vector<bool> operator<(const T& value) {
+        return compare(value, std::less<>{});
     }
 
     /**
-     * @brief Compares each element in the series with a value using the greater-than-or-equal-to operator.
+     * @brief Less-than-or-equal-to comparison operator.
+     *
+     * Compares each element in the series with a provided value for "less than or equal to".
+     *
+     * @tparam T The type of the value to compare.
+     * @param value The value to compare against.
+     * @return A vector of boolean values indicating the result of "less than or equal to" for each element in the
+     * series.
      */
-    template <typename U>
-    std::vector<bool> operator>=(const U& value) const {
-        return compare<U>(value, [](const U& a, const U& b) { return a >= b; });
+    template <typename T>
+    std::vector<bool> operator<=(const T& value) {
+        return compare(value, std::less_equal<>{});
     }
 
     /**
-     * @brief Compares each element in the series with a value using the equality operator.
+     * @brief Greater-than comparison operator.
+     *
+     * Compares each element in the series with a provided value for "greater than".
+     *
+     * @tparam T The type of the value to compare.
+     * @param value The value to compare against.
+     * @return A vector of boolean values indicating the result of "greater than" for each element in the series.
      */
-    template <typename U>
-    std::vector<bool> operator==(const U& value) const {
-        return compare<U>(value, [](const U& a, const U& b) { return a == b; });
+    template <typename T>
+    std::vector<bool> operator>(const T& value) {
+        return compare(value, std::greater<>{});
     }
 
     /**
-     * @brief Compares each element in the series with a value using the inequality operator.
+     * @brief Greater-than-or-equal-to comparison operator.
+     *
+     * Compares each element in the series with a provided value for "greater than or equal to".
+     *
+     * @tparam T The type of the value to compare.
+     * @param value The value to compare against.
+     * @return A vector of boolean values indicating the result of "greater than or equal to" for each element in the
+     * series.
      */
-    template <typename U>
-    std::vector<bool> operator!=(const U& value) const {
-        return compare<U>(value, [](const U& a, const U& b) { return a != b; });
+    template <typename T>
+    std::vector<bool> operator>=(const T& value) {
+        return compare(value, std::greater_equal<>{});
     }
 };
 

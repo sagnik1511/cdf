@@ -6,7 +6,7 @@ int main() {
     cdf::DataFrame df = cdf::io::read_csv("/Users/tensored/cdf/titanic.csv");
 
     // Perform filtration
-    df = df[df["Age"] == 35];
+    df = df[df["Age"] >= 4];
 
     // Print the head of the dataframe
     df.head();
