@@ -22,7 +22,7 @@ std::string toString(const _cdfVal& var) {
 }
 
 // Finds maximum length of the character on each column
-std::vector<size_t> findMaxLength(std::vector<std::string> headers, std::vector<Row> rows) {
+std::vector<size_t> findMaxLength(std::vector<std::string> headers, std::vector<core::Row> rows) {
     std::vector<size_t> maxLen(headers.size(), 0);
 
     for (int i = 0; i < headers.size(); i++) {
@@ -46,7 +46,7 @@ void addHorizontalLine(std::vector<size_t> width) {
 };
 
 // prints each dataframe row
-void printRow(Row row, std::vector<size_t> width) {
+void printRow(core::Row row, std::vector<size_t> width) {
     std::cout << "|";
     for (int i = 0; i < row.size(); i++) {
         std::string strValue = toString(row[i]);
@@ -59,7 +59,7 @@ void printRow(Row row, std::vector<size_t> width) {
 };
 
 // Prints a whole dataframe view on CLI
-void tabulate(std::vector<std::string> headers, std::vector<Row> rows) {
+void tabulate(std::vector<std::string> headers, std::vector<core::Row> rows) {
     std::vector<size_t> maxLen = findMaxLength(headers, rows);
 
     addHorizontalLine(maxLen);

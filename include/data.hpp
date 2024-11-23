@@ -7,6 +7,8 @@
 
 namespace cdf {
 
+namespace core {
+
 /**
  * @brief Represents a single row of data.
  *
@@ -348,6 +350,8 @@ class Data {
         push_back(_row);
     }
 };
+}  // namespace core
+
 }  // namespace cdf
 
 #endif

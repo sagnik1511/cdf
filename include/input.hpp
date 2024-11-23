@@ -83,7 +83,7 @@ DataFrame read_csv_old(std::string csvFilePath, char delimiter = ',', int header
         return DataFrame();
     }
 
-    Data data;
+    core::Data data;
     std::string line;
     int currIdx = 0;
 
@@ -98,7 +98,7 @@ DataFrame read_csv_old(std::string csvFilePath, char delimiter = ',', int header
             while (std::getline(headerStream, val, delimiter)) {
                 headers.push_back(val);
             }
-            data = Data(headers.size());
+            data = core::Data(headers.size());
         } else {
             // Process each data row
             std::string val;
@@ -128,7 +128,7 @@ DataFrame read_csv_old(std::string csvFilePath, char delimiter = ',', int header
             if (line[line.size() - 1] == ',') {
                 cacheRow.push_back("");
             }
-            Row row = Row(cacheRow);
+            core::Row row(cacheRow);
             data.push_back(row);
         }
         ++currIdx;
@@ -244,7 +244,7 @@ DataFrame read_csv(std::string csvFilePath, char delimiter = ',', int header = 0
     // }
 
     // Insert data into Data class after updating data-type
-    Data data(headers.size());
+    core::Data data(headers.size());
 
     for (int i = 0; i < cache.size(); i++) {
         std::vector<_cdfVal> cacheRow;

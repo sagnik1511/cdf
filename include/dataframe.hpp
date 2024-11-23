@@ -23,7 +23,7 @@ namespace cdf {
 class DataFrame {
     std::vector<std::string> columns;          /**< Column names in the DataFrame */
     std::map<std::string, int> columnIndexMap; /**< Map to store column names and their respective indices */
-    Data data;                                 /**< Data storage object for rows of the DataFrame */
+    core::Data data;                           /**< Data storage object for rows of the DataFrame */
 
    public:
     /**
@@ -31,7 +31,7 @@ class DataFrame {
      * @param data The data object to initialize the DataFrame with (default is an empty Data).
      * @param columns The column names for the DataFrame (default is an empty vector).
      */
-    DataFrame(Data data = {}, std::vector<std::string> columns = {}) : data(data), columns(columns) {
+    DataFrame(core::Data data = {}, std::vector<std::string> columns = {}) : data(data), columns(columns) {
         columnIndexMap.clear();
         for (int i = 0; i < columns.size(); i++) {
             columnIndexMap[columns[i]] = i;
@@ -50,7 +50,7 @@ class DataFrame {
      */
     void head(int numRows = 5) {
         int n = std::min(static_cast<size_t>(numRows), data.size());
-        std::vector<Row> rows;
+        std::vector<core::Row> rows;
         for (int i = 0; i < n; i++) {
             rows.push_back(data[i]);
         }
@@ -63,7 +63,7 @@ class DataFrame {
      */
     void tail(int numRows = 5) {
         int n = std::min(static_cast<size_t>(numRows), data.size());
-        std::vector<Row> rows;
+        std::vector<core::Row> rows;
         for (int i = data.size() - n; i < data.size(); i++) {
             rows.push_back(data[i]);
         }
@@ -74,7 +74,7 @@ class DataFrame {
      * @brief Returns Series object holidng column values
      * @param columnName The name of the corresponding column
      */
-    Series operator[](std::string columnName) {
+    core::Series operator[](std::string columnName) {
         if (columnIndexMap.find(columnName) == columnIndexMap.end()) {
             throw std::invalid_argument("Column Not present");
         }
@@ -84,7 +84,7 @@ class DataFrame {
             column.push_back(data[i][colIdx]);
         }
 
-        return cdf::Series(column);
+        return cdf::core::Series(column);
     };
 
     /**
@@ -142,14 +142,14 @@ class DataFrame {
             throw std::out_of_range("Indices are out of range!");
         }
 
-        Data tmpData(endIdx - startIdx + 1);
+        core::Data tmpData(endIdx - startIdx + 1);
         for (int i = startIndex; i <= endIndex; i++) {
-            Row _row = data[i];
+            core::Row _row = data[i];
             std::vector<_cdfVal> tmpRow;
             for (int j = startIdx; j <= endIdx; j++) {
                 tmpRow.push_back(_row[j]);
             }
-            Row newRow(tmpRow);
+            core::Row newRow(tmpRow);
             tmpData.push_back(newRow);
         }
 
@@ -165,12 +165,12 @@ class DataFrame {
      * @throws std::out_of_range If any of the indices are out of range of the DataFrame.
      */
     const DataFrame filter(const std::vector<int>& indexes) {
-        Data tmpData(columns.size());
+        core::Data tmpData(columns.size());
         for (auto idx : indexes) {
             if (idx < 0 || idx >= data.size()) {
                 throw std::out_of_range("Index is out of range!");
             }
-            Row _row = data[idx];
+            core::Row _row = data[idx];
             tmpData.push_back(_row);
         }
         return DataFrame(tmpData, columns);
