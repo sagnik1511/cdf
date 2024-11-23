@@ -3,23 +3,12 @@
 
 #include <algorithm>
 #include <iostream>
-#include <sstream>
 #include <vector>
 
 #include "data.hpp"
+#include "utils.hpp"
 
 namespace cdf {
-
-// Converts variant objects to string objects
-std::string toString(const _cdfVal& var) {
-    return std::visit(
-        [](const auto& value) -> std::string {
-            std::ostringstream oss;
-            oss << value;
-            return oss.str();
-        },
-        var);
-}
 
 // Finds maximum length of the character on each column
 std::vector<size_t> findMaxLength(std::vector<std::string> headers, std::vector<core::Row> rows) {

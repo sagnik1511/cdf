@@ -1,6 +1,7 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
+#include <sstream>
 #include <vector>
 
 #include "dtypes.hpp"
@@ -62,6 +63,21 @@ std::pair<int, _cdfVal> inferAndConvert(const std::string& field) {
 
     // If conversion to int or double failed, treat as a string
     return std::make_pair(2, field);
+}
+
+/**
+ * @brief Converts variant objects to string
+ *
+ * @param var a cdf::_cdfVal variant variable
+ */
+std::string toString(const _cdfVal& var) {
+    return std::visit(
+        [](const auto& value) -> std::string {
+            std::ostringstream oss;
+            oss << value;
+            return oss.str();
+        },
+        var);
 }
 
 #endif

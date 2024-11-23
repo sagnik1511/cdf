@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "dtypes.hpp"
+#include "utils.hpp"
 
 namespace cdf {
 
@@ -270,6 +271,109 @@ class Series {
     template <typename T>
     std::vector<bool> operator>=(const T& value) {
         return compare(value, std::greater_equal<>{});
+    }
+
+    /**
+     * @brief Sum Calculator
+     *
+     * Calculates sum of non-string columns, ignores nan-values
+     *
+     * @throws std::runtime_error if string type field is found
+     */
+    double sum() const {
+        double sumValue = 0;
+
+        for (auto& rowVal : series) {
+            if (std::holds_alternative<cdf::NaN>(rowVal)) {
+                continue;
+            } else if (std::holds_alternative<int>(rowVal)) {
+                sumValue += static_cast<double>(std::get<int>(rowVal));
+            } else if (std::holds_alternative<double>(rowVal)) {
+                sumValue += std::get<double>(rowVal);
+            } else {
+                throw std::runtime_error("String Data-Type isn't expected!");
+            }
+        }
+
+        return sumValue;
+    }
+
+    /**
+     * @brief Mean Calculator
+     *
+     * Calculates mean of non-string columns, ignores nan-values
+     *
+     * @throws std::runtime_error if string type field is found
+     */
+    double mean() { return this->sum() / series.size(); }
+
+    /**
+     * @brief Median Calculator
+     *
+     * Calculates median of non-string columns, ignores nan-values
+     *
+     * @throws std::runtime_error if string type field is found
+     */
+    double median() {
+        std::vector<double> values;
+        for (auto& rowVal : series) {
+            if (std::holds_alternative<cdf::NaN>(rowVal)) {
+                continue;
+            } else if (std::holds_alternative<int>(rowVal)) {
+                values.push_back(static_cast<double>(std::get<int>(rowVal)));
+            } else if (std::holds_alternative<double>(rowVal)) {
+                values.push_back(std::get<double>(rowVal));
+            } else {
+                throw std::runtime_error("String Data-Type isn't expected!");
+            }
+        }
+        sort(values.begin(), values.end());
+
+        int medIdx = values.size() / 2;
+        return values[medIdx];
+    }
+
+    /**
+     * @brief Mode Calculator for Columns with String Data-Type
+     *
+     * Calculates mode of the column values, ignores nan-values
+     * @returns mode value in string format
+     */
+    std::string mode() {
+        std::map<std::string, int> counter;
+
+        int maxCounter = 0;
+        std::string strVal, modeValString = std::string("");
+
+        // Iterate through the elements and count the max present element
+        for (auto& rowVal : series) {
+            if (std::holds_alternative<NaN>(rowVal)) {
+                continue;
+            } else {
+                strVal = toString(rowVal);
+
+                // Update frequencies of the elements and update mode
+                counter[strVal]++;
+                if (counter[strVal] > maxCounter) {
+                    modeValString = strVal;
+                    maxCounter = counter[strVal];
+                }
+            }
+        }
+        return modeValString;
+    }
+
+    /**
+     * @brief Mode Calculator for Columns with Non-String Data-Type
+     *
+     * Calculates mode of the column values, ignores nan-values
+     * @returns mode value in non-string format
+     */
+    template <typename T, typename = std::enable_if_t<std::is_same_v<T, int> || std::is_same_v<T, double>>>
+    T mode() {
+        double modeVal = std::stod(mode());
+
+        return static_cast<T>(modeVal);
     }
 };
 

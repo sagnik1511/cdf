@@ -76,7 +76,7 @@ class DataFrame {
      */
     core::Series operator[](std::string columnName) {
         if (columnIndexMap.find(columnName) == columnIndexMap.end()) {
-            throw std::invalid_argument("Column Not present");
+            throw std::invalid_argument("[cdf][DataFrame] Column Not present");
         }
         int colIdx = columnIndexMap[columnName];
         std::vector<_cdfVal> column;
@@ -99,6 +99,41 @@ class DataFrame {
         }
         return filter(indices);
     }
+
+    /**
+     * @brief Selects particular columns
+     *
+     * Creates a slice of columns
+     *
+     * @param fields A vector of string containing the required columns for the subset
+     * @throws std::out_of_range If any column is not presnet in the current dataframe
+     *
+     * @returns DataFrame consisting of the given columns
+     */
+    const DataFrame operator[](const std::vector<std::string> fields) {
+        std::vector<int> validColumnIndexes;
+
+        // Checks and stores column indexes for further data-gathering
+        for (auto field : fields) {
+            if (columnIndexMap.find(field) != columnIndexMap.end()) {
+                validColumnIndexes.push_back(columnIndexMap[field]);
+            } else {
+                std::string errorMessage = "[cdf][DataFrame] " + field + " not present inside dataframe object!";
+                throw std::out_of_range(errorMessage);
+            }
+        }
+
+        core::Data tmpData(validColumnIndexes.size());
+        for (int i = 0; i < data.size(); i++) {
+            std::vector<_cdfVal> tmpRow;
+            for (auto& idx : validColumnIndexes) {
+                tmpRow.push_back(data[i][idx]);
+            }
+            tmpData.push_back(tmpRow);
+        }
+
+        return DataFrame(tmpData, fields);
+    };
 
     /**
      * @brief Retrieves a slice of the DataFrame by row and column index.
@@ -128,23 +163,23 @@ class DataFrame {
 
         if (columnIndexMap.find(startColumnName) == columnIndexMap.end() ||
             columnIndexMap.find(endColumnName) == columnIndexMap.end()) {
-            throw std::runtime_error("Column Name Not Found!");
+            throw std::runtime_error("[cdf][DataFrame] Column Name Not Found!");
         }
 
         int startIdx = columnIndexMap[startColumnName];
         int endIdx = columnIndexMap[endColumnName];
 
         if (startIdx > endIdx) {
-            throw std::invalid_argument("Start Column should be at lower index than End Column");
+            throw std::invalid_argument("[cdf][DataFrame] Start Column should be at lower index than End Column");
         }
 
         if (startIndex < 0 || endIndex >= data.size()) {
-            throw std::out_of_range("Indices are out of range!");
+            throw std::out_of_range("[cdf][DataFrame] Indices are out of range!");
         }
 
         core::Data tmpData(endIdx - startIdx + 1);
         for (int i = startIndex; i <= endIndex; i++) {
-            core::Row _row = data[i];
+            core::Row _row(data[i]);
             std::vector<_cdfVal> tmpRow;
             for (int j = startIdx; j <= endIdx; j++) {
                 tmpRow.push_back(_row[j]);
@@ -168,7 +203,7 @@ class DataFrame {
         core::Data tmpData(columns.size());
         for (auto idx : indexes) {
             if (idx < 0 || idx >= data.size()) {
-                throw std::out_of_range("Index is out of range!");
+                throw std::out_of_range("[cdf][DataFrame] Index is out of range!");
             }
             core::Row _row = data[idx];
             tmpData.push_back(_row);

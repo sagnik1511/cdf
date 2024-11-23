@@ -129,6 +129,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae97805caa131c61a1c6af9c758ea8025"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae97805caa131c61a1c6af9c758ea8025">operator&gt;=</a> (const T &amp;value)</td></tr>
 <tr class="memdesc:ae97805caa131c61a1c6af9c758ea8025"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater-than-or-equal-to comparison operator.  <br /></td></tr>
 <tr class="separator:ae97805caa131c61a1c6af9c758ea8025"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb4ebcf90ba3fb029d7a5bcbc0569df" id="r_abdb4ebcf90ba3fb029d7a5bcbc0569df"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdb4ebcf90ba3fb029d7a5bcbc0569df">sum</a> () const</td></tr>
+<tr class="memdesc:abdb4ebcf90ba3fb029d7a5bcbc0569df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum Calculator.  <br /></td></tr>
+<tr class="separator:abdb4ebcf90ba3fb029d7a5bcbc0569df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f735256a4e47b95c21ff88e392200d7" id="r_a0f735256a4e47b95c21ff88e392200d7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f735256a4e47b95c21ff88e392200d7">mean</a> ()</td></tr>
+<tr class="memdesc:a0f735256a4e47b95c21ff88e392200d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mean Calculator.  <br /></td></tr>
+<tr class="separator:a0f735256a4e47b95c21ff88e392200d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a009f4fd8cfd861f11ada0e3a00ea3cbc" id="r_a009f4fd8cfd861f11ada0e3a00ea3cbc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a009f4fd8cfd861f11ada0e3a00ea3cbc">median</a> ()</td></tr>
+<tr class="memdesc:a009f4fd8cfd861f11ada0e3a00ea3cbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Median Calculator.  <br /></td></tr>
+<tr class="separator:a009f4fd8cfd861f11ada0e3a00ea3cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8689430d6f0bc40245395bef944b3e91" id="r_a8689430d6f0bc40245395bef944b3e91"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8689430d6f0bc40245395bef944b3e91">mode</a> ()</td></tr>
+<tr class="memdesc:a8689430d6f0bc40245395bef944b3e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode Calculator for Columns with String Data-Type.  <br /></td></tr>
+<tr class="separator:a8689430d6f0bc40245395bef944b3e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7a6886ad902422fff06b713dc61b246" id="r_ab7a6886ad902422fff06b713dc61b246"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;std::is_same_v&lt;T, int&gt; || std::is_same_v&lt;T, double&gt;&gt;&gt; </td></tr>
+<tr class="memitem:ab7a6886ad902422fff06b713dc61b246"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab7a6886ad902422fff06b713dc61b246">mode</a> ()</td></tr>
+<tr class="memdesc:ab7a6886ad902422fff06b713dc61b246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode Calculator for Columns with Non-String Data-Type.  <br /></td></tr>
+<tr class="separator:ab7a6886ad902422fff06b713dc61b246"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class that represents a series of heterogeneous data values and provides comparison utilities. </p>
@@ -168,6 +184,132 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0f735256a4e47b95c21ff88e392200d7" name="a0f735256a4e47b95c21ff88e392200d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f735256a4e47b95c21ff88e392200d7">&#9670;&#160;</a></span>mean()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double cdf::core::Series::mean </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mean Calculator. </p>
+<p>Calculates mean of non-string columns, ignores nan-values</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if string type field is found </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a009f4fd8cfd861f11ada0e3a00ea3cbc" name="a009f4fd8cfd861f11ada0e3a00ea3cbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a009f4fd8cfd861f11ada0e3a00ea3cbc">&#9670;&#160;</a></span>median()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double cdf::core::Series::median </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Median Calculator. </p>
+<p>Calculates median of non-string columns, ignores nan-values</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if string type field is found </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8689430d6f0bc40245395bef944b3e91" name="a8689430d6f0bc40245395bef944b3e91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8689430d6f0bc40245395bef944b3e91">&#9670;&#160;</a></span>mode() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string cdf::core::Series::mode </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mode Calculator for Columns with String Data-Type. </p>
+<p>Calculates mode of the column values, ignores nan-values </p><dl class="section return"><dt>Returns</dt><dd>mode value in string format </dd></dl>
+
+</div>
+</div>
+<a id="ab7a6886ad902422fff06b713dc61b246" name="ab7a6886ad902422fff06b713dc61b246"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7a6886ad902422fff06b713dc61b246">&#9670;&#160;</a></span>mode() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename  = std::enable_if_t&lt;std::is_same_v&lt;T, int&gt; || std::is_same_v&lt;T, double&gt;&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T cdf::core::Series::mode </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mode Calculator for Columns with Non-String Data-Type. </p>
+<p>Calculates mode of the column values, ignores nan-values </p><dl class="section return"><dt>Returns</dt><dd>mode value in non-string format </dd></dl>
+
+</div>
+</div>
 <a id="ae77227e337d5f35f0921bae347c80989" name="ae77227e337d5f35f0921bae347c80989"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae77227e337d5f35f0921bae347c80989">&#9670;&#160;</a></span>operator!=()</h2>
 
@@ -423,6 +565,40 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A vector of boolean values indicating the result of "greater than or equal to" for each element in the series. </dd></dl>
+
+</div>
+</div>
+<a id="abdb4ebcf90ba3fb029d7a5bcbc0569df" name="abdb4ebcf90ba3fb029d7a5bcbc0569df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdb4ebcf90ba3fb029d7a5bcbc0569df">&#9670;&#160;</a></span>sum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double cdf::core::Series::sum </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sum Calculator. </p>
+<p>Calculates sum of non-string columns, ignores nan-values</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if string type field is found </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
