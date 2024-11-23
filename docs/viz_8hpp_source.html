@@ -115,7 +115,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// Finds maximum length of the character on each column</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>std::vector&lt;size_t&gt; findMaxLength(std::vector&lt;std::string&gt; headers, std::vector&lt;Row&gt; rows) {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>std::vector&lt;size_t&gt; findMaxLength(std::vector&lt;std::string&gt; headers, std::vector&lt;core::Row&gt; rows) {</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    std::vector&lt;size_t&gt; maxLen(headers.size(), 0);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; headers.size(); i++) {</div>
@@ -139,7 +139,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// prints each dataframe row</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> printRow(Row row, std::vector&lt;size_t&gt; width) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> printRow(core::Row row, std::vector&lt;size_t&gt; width) {</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;|&quot;</span>;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; row.size(); i++) {</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        std::string strValue = toString(row[i]);</div>
@@ -152,7 +152,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">// Prints a whole dataframe view on CLI</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">void</span> tabulate(std::vector&lt;std::string&gt; headers, std::vector&lt;Row&gt; rows) {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">void</span> tabulate(std::vector&lt;std::string&gt; headers, std::vector&lt;core::Row&gt; rows) {</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    std::vector&lt;size_t&gt; maxLen = findMaxLength(headers, rows);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    addHorizontalLine(maxLen);</div>

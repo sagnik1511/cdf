@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['row_0',['Row',['../classcdf_1_1_row.html',1,'cdf']]]
+  ['row_0',['Row',['../classcdf_1_1core_1_1_row.html',1,'cdf::core']]]
 ];
