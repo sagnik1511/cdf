@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['series_0',['Series',['../classcdf_1_1core_1_1_series.html#ae88cce98e58dd50cf61896d79c9f3b13',1,'cdf::core::Series']]],
-  ['shape_1',['shape',['../classcdf_1_1core_1_1_data.html#a13249fb452496a8dfda61311cd2175b1',1,'cdf::core::Data::shape()'],['../classcdf_1_1_data_frame.html#a8415194fb82967997caf1f579d5f0c9d',1,'cdf::DataFrame::shape()']]],
-  ['size_2',['size',['../classcdf_1_1core_1_1_row.html#a064af9948b9364c4017e05f69c15a842',1,'cdf::core::Row::size()'],['../classcdf_1_1core_1_1_data.html#a43d59c4fc9ab5a05042c3efb002d95ec',1,'cdf::core::Data::size()']]],
-  ['sum_3',['sum',['../classcdf_1_1core_1_1_series.html#abdb4ebcf90ba3fb029d7a5bcbc0569df',1,'cdf::core::Series']]]
+  ['printrow_0',['printRow',['../namespacecdf.html#ab1362a88ecf16bc6c2947b8b5b7a8414',1,'cdf']]],
+  ['push_5fback_1',['push_back',['../classcdf_1_1core_1_1_data.html#a09fb0c06a654f82bb238e6a148816b3e',1,'cdf::core::Data::push_back(Row &amp;row)'],['../classcdf_1_1core_1_1_data.html#ab91b531c00c07995bcb8fc71179c8ab1',1,'cdf::core::Data::push_back(std::vector&lt; _cdfVal &gt; &amp;row)']]]
 ];

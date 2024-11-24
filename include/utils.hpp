@@ -1,6 +1,7 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
+#include <iomanip>
 #include <sstream>
 #include <vector>
 
@@ -66,18 +67,82 @@ std::pair<int, _cdfVal> inferAndConvert(const std::string& field) {
 }
 
 /**
+ * @brief Removes trailing characters
+ *
+ * @param str The corresponding string
+ * @param stripChar The character whic is to be removed
+ * @returns stripped string from right side
+ */
+std::string rstrip(const std::string str, const char stripChar) {
+    int rIdx = 0;
+    for (int i = str.size() - 1; i >= 0; i--) {
+        if (str[i] == stripChar) {
+            rIdx++;
+        } else {
+            break;
+        }
+    }
+    return std::string(str.begin(), str.end() - rIdx);
+}
+
+/**
+ * @brief Prepares double variable to string without truncating precision
+ * It is assumed that values will hold 12 digit of precision in general
+ *
+ * @param str double string value having padding
+ * @returns double string with actaul precision
+ */
+std::string stodst(std::string str) {
+    str = rstrip(str, '0');
+    if (str[str.size() - 1] == '.') {
+        return std::string(str.begin(), str.end() - 1);
+    }
+    return str;
+}
+
+/**
  * @brief Converts variant objects to string
  *
  * @param var a cdf::_cdfVal variant variable
+ * @param precision Precision of the double data-type values
+ * @return String value of the variant object
  */
-std::string toString(const _cdfVal& var) {
+std::string toString(const _cdfVal& var, int precision = 12) {
     return std::visit(
-        [](const auto& value) -> std::string {
+        [precision](const auto& value) -> std::string {
             std::ostringstream oss;
-            oss << value;
+            if constexpr (std::is_same_v<std::decay_t<decltype(value)>, double>) {
+                oss << std::fixed << std::setprecision(precision) << value;
+                return stodst(oss.str());
+            } else {
+                oss << value;  // Default formatting for non-double types
+                return oss.str();
+            }
             return oss.str();
         },
         var);
+}
+
+/**
+ * @brief Converts data-types into string without losing precision for decimal values
+ *
+ * @param value Actual value
+ * @param precision Integer value of precision for fractional values (defaults to 12)
+ * @returns Value in string format
+ */
+template <typename T>
+std::string to_string(const T& value, int precision = 12) {
+    std::ostringstream oss;
+    std::string strAns = "";
+    if constexpr (std::is_same_v<T, double>) {
+        oss << std::fixed << std::setprecision(precision) << value;
+        strAns = stodst(oss.str());
+    } else {
+        oss << value;
+        strAns = oss.str();
+    }
+
+    return strAns;
 }
 
 #endif

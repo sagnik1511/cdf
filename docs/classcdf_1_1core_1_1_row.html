@@ -5,12 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: cdf::core::Row Class Reference</title>
+<title>CDF - C++ DataFrame: cdf::core::Row Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -25,8 +27,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">CDF - C++ DataFrame
    </div>
+   <div id="projectbrief">A simple C++ lightweight Dataframe package for data manipuation</div>
   </td>
  </tr>
  </tbody>
@@ -49,17 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('classcdf_1_1core_1_1_row.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -81,12 +96,6 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>cdf</b></li><li class="navelem"><b>core</b></li><li class="navelem"><a class="el" href="classcdf_1_1core_1_1_row.html">Row</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -109,7 +118,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a064af9948b9364c4017e05f69c15a842" id="r_a064af9948b9364c4017e05f69c15a842"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a064af9948b9364c4017e05f69c15a842">size</a> ()</td></tr>
 <tr class="memdesc:a064af9948b9364c4017e05f69c15a842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the row.  <br /></td></tr>
 <tr class="separator:a064af9948b9364c4017e05f69c15a842"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdcad6f4db17287f8b8312618bd29a2f" id="r_abdcad6f4db17287f8b8312618bd29a2f"><td class="memItemLeft" align="right" valign="top">const _cdfVal &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdcad6f4db17287f8b8312618bd29a2f">operator[]</a> (size_t index) const</td></tr>
+<tr class="memitem:abdcad6f4db17287f8b8312618bd29a2f" id="r_abdcad6f4db17287f8b8312618bd29a2f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="dtypes_8hpp.html#a3e46213482851f5e59c8bdcc806309b6">_cdfVal</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdcad6f4db17287f8b8312618bd29a2f">operator[]</a> (size_t index) const</td></tr>
 <tr class="memdesc:abdcad6f4db17287f8b8312618bd29a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesses the element at the specified index in the row.  <br /></td></tr>
 <tr class="separator:abdcad6f4db17287f8b8312618bd29a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -163,7 +172,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const _cdfVal &amp; cdf::core::Row::operator[] </td>
+          <td class="memname">const <a class="el" href="dtypes_8hpp.html#a3e46213482851f5e59c8bdcc806309b6">_cdfVal</a> &amp; cdf::core::Row::operator[] </td>
           <td>(</td>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td> const</td>
@@ -218,6 +227,36 @@ template&lt;typename T &gt; </div>
 
 <p>Returns the size of the row. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of elements in the row. </dd></dl>
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="classcdf_1_1core_1_1_row_a064af9948b9364c4017e05f69c15a842_icgraph.png" border="0" usemap="#aclasscdf_1_1core_1_1_row_a064af9948b9364c4017e05f69c15a842_icgraph" alt=""/></div>
+<map name="aclasscdf_1_1core_1_1_row_a064af9948b9364c4017e05f69c15a842_icgraph" id="aclasscdf_1_1core_1_1_row_a064af9948b9364c4017e05f69c15a842_icgraph">
+<area shape="rect" title="Returns the size of the row." alt="" coords="683,129,823,155"/>
+<area shape="rect" href="namespacecdf.html#ab1362a88ecf16bc6c2947b8b5b7a8414" title=" " alt="" coords="496,80,595,106"/>
+<area shape="poly" title=" " alt="" coords="680,128,595,107,597,102,682,123"/>
+<area shape="rect" href="classcdf_1_1core_1_1_data.html#a09fb0c06a654f82bb238e6a148816b3e" title="Adds a new row to the dataset." alt="" coords="456,153,635,179"/>
+<area shape="poly" title=" " alt="" coords="668,155,636,158,636,153,667,149"/>
+<area shape="rect" href="namespacecdf.html#ad522ec371aba2fa592c26942297b148f" title=" " alt="" coords="272,55,365,80"/>
+<area shape="poly" title=" " alt="" coords="480,88,365,75,366,70,481,83"/>
+<area shape="rect" href="classcdf_1_1_data_frame.html#a76164c5a52888ee648ee484c708bb799" title="Displays the first few rows of the DataFrame." alt="" coords="19,5,167,31"/>
+<area shape="poly" title=" " alt="" coords="256,57,154,34,156,29,257,52"/>
+<area shape="rect" href="classcdf_1_1_data_frame.html#a05cb0e25943e11832b97519f896f3c33" title="Displays the last few rows of the DataFrame." alt="" coords="24,55,162,80"/>
+<area shape="poly" title=" " alt="" coords="256,70,162,70,162,65,256,65"/>
+<area shape="rect" href="classcdf_1_1_data_frame.html#a9028256dc3071be4cea0d4e1faa38e20" title="Filters rows based on specified row indices." alt="" coords="246,104,391,130"/>
+<area shape="poly" title=" " alt="" coords="467,152,380,133,382,128,469,147"/>
+<area shape="rect" href="classcdf_1_1_data_frame.html#a164f193a292b413d20057b9eb9ef9c56" title="Retrieves a slice of the DataFrame by row and column index." alt="" coords="248,153,388,179"/>
+<area shape="poly" title=" " alt="" coords="440,169,389,169,389,164,440,164"/>
+<area shape="rect" href="classcdf_1_1_data_frame.html#a8eedc66fc964540d6401c907c3d4adc4" title="Selects particular columns." alt="" coords="231,203,406,228"/>
+<area shape="poly" title=" " alt="" coords="469,186,382,205,380,199,467,180"/>
+<area shape="rect" href="classcdf_1_1core_1_1_data.html#ab91b531c00c07995bcb8fc71179c8ab1" title="Adds a new row to teh dataset." alt="" coords="229,252,408,278"/>
+<area shape="poly" title=" " alt="" coords="512,190,464,217,409,243,378,254,376,249,407,238,462,212,510,185"/>
+<area shape="rect" href="classcdf_1_1_data_frame.html#a56e7d99fa96821a9fca633afe42b0acf" title="Retrieves a dataframe of the expected rows." alt="" coords="5,104,181,130"/>
+<area shape="poly" title=" " alt="" coords="230,120,181,120,181,114,230,114"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -225,10 +264,13 @@ template&lt;typename T &gt; </div>
 <li>include/<a class="el" href="data_8hpp_source.html">data.hpp</a></li>
 </ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacecdf.html">cdf</a></li><li class="navelem"><a class="el" href="namespacecdf_1_1core.html">core</a></li><li class="navelem"><a class="el" href="classcdf_1_1core_1_1_row.html">Row</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

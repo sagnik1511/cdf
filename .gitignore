@@ -5,10 +5,13 @@
 
 
 # DoxyFile
-Doxyfile
 Doxyfile.bak
 latex/
 html/
+docs/*tmp
+docs/*.map
+docs/*.md5
+man/*
 
 # Data Files
 *.csv

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nan_0',['NaN',['../classcdf_1_1_na_n.html',1,'cdf::NaN'],['../classcdf_1_1_na_n.html#a5787da1c1f715dc50492e887014874cb',1,'cdf::NaN::NaN()']]]
+  ['head_0',['head',['../classcdf_1_1_data_frame.html#a76164c5a52888ee648ee484c708bb799',1,'cdf::DataFrame']]]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['mean_0',['mean',['../classcdf_1_1core_1_1_series.html#a0f735256a4e47b95c21ff88e392200d7',1,'cdf::core::Series']]],
-  ['median_1',['median',['../classcdf_1_1core_1_1_series.html#a009f4fd8cfd861f11ada0e3a00ea3cbc',1,'cdf::core::Series']]],
-  ['mode_2',['mode',['../classcdf_1_1core_1_1_series.html#a8689430d6f0bc40245395bef944b3e91',1,'cdf::core::Series::mode()'],['../classcdf_1_1core_1_1_series.html#ab7a6886ad902422fff06b713dc61b246',1,'cdf::core::Series::mode()']]]
+  ['filter_0',['filter',['../classcdf_1_1_data_frame.html#a9028256dc3071be4cea0d4e1faa38e20',1,'cdf::DataFrame']]],
+  ['findmaxlength_1',['findMaxLength',['../namespacecdf.html#ae9fdce5edb8a4c94a9870530c788fa44',1,'cdf']]]
 ];

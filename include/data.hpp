@@ -82,9 +82,9 @@ class Series {
                 [&](const auto& v) -> bool {
                     using T = std::decay_t<decltype(v)>;
                     if constexpr (std::is_same_v<T, int>) {
-                        return op(std::to_string(v), val);
+                        return op(to_string(v), val);
                     } else if constexpr (std::is_same_v<T, double>) {
-                        return op(std::to_string(v), val);
+                        return op(to_string(v), val);
                     } else if constexpr (std::is_same_v<T, std::string>) {
                         return op(v, val);
                     } else {
@@ -271,6 +271,36 @@ class Series {
     template <typename T>
     std::vector<bool> operator>=(const T& value) {
         return compare(value, std::greater_equal<>{});
+    }
+
+    /**
+     * @brief Filteres a set of values
+     *
+     * isin function helps to filter a set of values from series object
+     * @param values A vector of values, for which the presence will be checked
+     *
+     * @returns A vector of boolean where each element comprises the presence of the objects shared above for each index
+     */
+    template <typename T>
+    std::vector<bool> isin(const std::vector<T>& values) {
+        // Storing each value to string for faster operation
+        std::map<std::string, int> valPresent;
+        for (auto& el : values) {
+            valPresent[to_string(el)]++;
+        }
+
+        std::vector<bool> truth;
+
+        // Updating the values from series object to String format and checking their presence
+        for (auto& rowVal : series) {
+            if (valPresent[toString(rowVal)]) {
+                truth.push_back(true);
+            } else {
+                truth.push_back(false);
+            }
+        }
+
+        return truth;
     }
 
     /**

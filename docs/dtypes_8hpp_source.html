@@ -5,12 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: include/dtypes.hpp Source File</title>
+<title>CDF - C++ DataFrame: include/dtypes.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -25,8 +27,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">CDF - C++ DataFrame
    </div>
+   <div id="projectbrief">A simple C++ lightweight Dataframe package for data manipuation</div>
   </td>
  </tr>
  </tbody>
@@ -49,17 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('dtypes_8hpp_source.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -81,17 +96,11 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="headertitle"><div class="title">dtypes.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef DTYPES_HPP</span></div>
+<a href="dtypes_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef DTYPES_HPP</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define DTYPES_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;ostream&gt;</span></div>
@@ -99,9 +108,9 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;variant&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>cdf {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacecdf.html">cdf</a> {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>std::vector&lt;std::string&gt; dTypeWithRank = {<span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;double&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>};</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespacecdf.html#a227ffbc155ef1a3765ca40a3a8c4711d">   20</a></span>std::vector&lt;std::string&gt; <a class="code hl_variable" href="namespacecdf.html#a227ffbc155ef1a3765ca40a3a8c4711d">dTypeWithRank</a> = {<span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;double&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>};</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="foldopen" id="foldopen00040" data-start="{" data-end="};">
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classcdf_1_1_na_n.html">   40</a></span><span class="keyword">class </span><a class="code hl_class" href="classcdf_1_1_na_n.html">NaN</a> {</div>
@@ -165,7 +174,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>}  <span class="comment">// namespace cdf</span></div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keyword">using </span>_cdfVal = std::variant&lt;std::string, int, double, cdf::NaN&gt;;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="dtypes_8hpp.html#a3e46213482851f5e59c8bdcc806309b6">  173</a></span><span class="keyword">using </span><a class="code hl_typedef" href="dtypes_8hpp.html#a3e46213482851f5e59c8bdcc806309b6">_cdfVal</a> = std::variant&lt;std::string, int, double, cdf::NaN&gt;;</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="preprocessor">#endif  </span><span class="comment">// DTYPES_HPP</span></div>
 <div class="ttc" id="aclasscdf_1_1_na_n_html"><div class="ttname"><a href="classcdf_1_1_na_n.html">cdf::NaN</a></div><div class="ttdoc">A class to represent a &quot;Not a Number&quot; (NaN) value.</div><div class="ttdef"><b>Definition</b> dtypes.hpp:40</div></div>
@@ -179,11 +188,17 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclasscdf_1_1_na_n_html_a860b0c23f40e8922235c9a76ac2a5079"><div class="ttname"><a href="classcdf_1_1_na_n.html#a860b0c23f40e8922235c9a76ac2a5079">cdf::NaN::operator==</a></div><div class="ttdeci">friend bool operator==(const NaN &amp;, const T &amp;)</div><div class="ttdoc">Equality comparison operator.</div><div class="ttdef"><b>Definition</b> dtypes.hpp:70</div></div>
 <div class="ttc" id="aclasscdf_1_1_na_n_html_aafd4a4ac808314ce524c8c7d5f6f4daa"><div class="ttname"><a href="classcdf_1_1_na_n.html#aafd4a4ac808314ce524c8c7d5f6f4daa">cdf::NaN::operator==</a></div><div class="ttdeci">friend bool operator==(const NaN &amp;, const NaN &amp;)</div><div class="ttdoc">Equality comparison operator for NaN objects.</div><div class="ttdef"><b>Definition</b> dtypes.hpp:81</div></div>
 <div class="ttc" id="aclasscdf_1_1_na_n_html_ab0895daae1071bf7cc3b297b24a5ad41"><div class="ttname"><a href="classcdf_1_1_na_n.html#ab0895daae1071bf7cc3b297b24a5ad41">cdf::NaN::operator!=</a></div><div class="ttdeci">friend bool operator!=(const NaN &amp;, const T &amp;)</div><div class="ttdoc">Inequality comparison operator.</div><div class="ttdef"><b>Definition</b> dtypes.hpp:92</div></div>
+<div class="ttc" id="adtypes_8hpp_html_a3e46213482851f5e59c8bdcc806309b6"><div class="ttname"><a href="dtypes_8hpp.html#a3e46213482851f5e59c8bdcc806309b6">_cdfVal</a></div><div class="ttdeci">std::variant&lt; std::string, int, double, cdf::NaN &gt; _cdfVal</div><div class="ttdoc">A variant type to represent different data types.</div><div class="ttdef"><b>Definition</b> dtypes.hpp:173</div></div>
+<div class="ttc" id="anamespacecdf_html"><div class="ttname"><a href="namespacecdf.html">cdf</a></div><div class="ttdef"><b>Definition</b> data.hpp:9</div></div>
+<div class="ttc" id="anamespacecdf_html_a227ffbc155ef1a3765ca40a3a8c4711d"><div class="ttname"><a href="namespacecdf.html#a227ffbc155ef1a3765ca40a3a8c4711d">cdf::dTypeWithRank</a></div><div class="ttdeci">std::vector&lt; std::string &gt; dTypeWithRank</div><div class="ttdoc">Data types with their rank in order of precedence.</div><div class="ttdef"><b>Definition</b> dtypes.hpp:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dtypes_8hpp.html">dtypes.hpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

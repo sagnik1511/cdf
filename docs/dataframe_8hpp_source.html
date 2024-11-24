@@ -5,12 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: include/dataframe.hpp Source File</title>
+<title>CDF - C++ DataFrame: include/dataframe.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -25,8 +27,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">CDF - C++ DataFrame
    </div>
+   <div id="projectbrief">A simple C++ lightweight Dataframe package for data manipuation</div>
   </td>
  </tr>
  </tbody>
@@ -49,17 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('dataframe_8hpp_source.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -81,17 +96,11 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="headertitle"><div class="title">dataframe.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef DATAFRAME_HPP</span></div>
+<a href="dataframe_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef DATAFRAME_HPP</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define DATAFRAME_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
@@ -100,11 +109,11 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;data.hpp&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;utils.hpp&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;viz.hpp&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="data_8hpp.html">data.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="utils_8hpp.html">utils.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="viz_8hpp.html">viz.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span>cdf {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacecdf.html">cdf</a> {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classcdf_1_1_data_frame.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classcdf_1_1_data_frame.html">DataFrame</a> {</div>
@@ -130,7 +139,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; i++) {</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            rows.push_back(data[i]);</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        tabulate(columns, rows);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_function" href="namespacecdf.html#ad522ec371aba2fa592c26942297b148f">tabulate</a>(columns, rows);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
 </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
@@ -141,7 +150,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = data.<a class="code hl_function" href="classcdf_1_1core_1_1_data.html#a43d59c4fc9ab5a05042c3efb002d95ec">size</a>() - n; i &lt; data.<a class="code hl_function" href="classcdf_1_1core_1_1_data.html#a43d59c4fc9ab5a05042c3efb002d95ec">size</a>(); i++) {</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            rows.push_back(data[i]);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        tabulate(columns, rows);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_function" href="namespacecdf.html#ad522ec371aba2fa592c26942297b148f">tabulate</a>(columns, rows);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
 </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
@@ -239,7 +248,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            tmpData.<a class="code hl_function" href="classcdf_1_1core_1_1_data.html#a09fb0c06a654f82bb238e6a148816b3e">push_back</a>(newRow);</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        }</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classcdf_1_1_data_frame.html#a816eb538688f1b2840cfa21f1dff9e2d">DataFrame</a>(tmpData, slice(columns, startIdx, endIdx - startIdx + 1));</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classcdf_1_1_data_frame.html#a816eb538688f1b2840cfa21f1dff9e2d">DataFrame</a>(tmpData, <a class="code hl_function" href="utils_8hpp.html#a3d933a02e02445d73e03a4423e97ca93">slice</a>(columns, startIdx, endIdx - startIdx + 1));</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    }</div>
 </div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
@@ -272,17 +281,26 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclasscdf_1_1_data_frame_html_a8eedc66fc964540d6401c907c3d4adc4"><div class="ttname"><a href="classcdf_1_1_data_frame.html#a8eedc66fc964540d6401c907c3d4adc4">cdf::DataFrame::operator[]</a></div><div class="ttdeci">const DataFrame operator[](const std::vector&lt; std::string &gt; fields)</div><div class="ttdoc">Selects particular columns.</div><div class="ttdef"><b>Definition</b> dataframe.hpp:113</div></div>
 <div class="ttc" id="aclasscdf_1_1_data_frame_html_a9028256dc3071be4cea0d4e1faa38e20"><div class="ttname"><a href="classcdf_1_1_data_frame.html#a9028256dc3071be4cea0d4e1faa38e20">cdf::DataFrame::filter</a></div><div class="ttdeci">const DataFrame filter(const std::vector&lt; int &gt; &amp;indexes)</div><div class="ttdoc">Filters rows based on specified row indices.</div><div class="ttdef"><b>Definition</b> dataframe.hpp:202</div></div>
 <div class="ttc" id="aclasscdf_1_1_data_frame_html_af92128e69ce1bee22def08d6501cf5d6"><div class="ttname"><a href="classcdf_1_1_data_frame.html#af92128e69ce1bee22def08d6501cf5d6">cdf::DataFrame::operator[]</a></div><div class="ttdeci">core::Series operator[](std::string columnName)</div><div class="ttdoc">Returns Series object holidng column values.</div><div class="ttdef"><b>Definition</b> dataframe.hpp:77</div></div>
-<div class="ttc" id="aclasscdf_1_1core_1_1_data_html"><div class="ttname"><a href="classcdf_1_1core_1_1_data.html">cdf::core::Data</a></div><div class="ttdoc">Represents a collection of rows of data, akin to a 2D matrix or dataframe.</div><div class="ttdef"><b>Definition</b> data.hpp:386</div></div>
-<div class="ttc" id="aclasscdf_1_1core_1_1_data_html_a09fb0c06a654f82bb238e6a148816b3e"><div class="ttname"><a href="classcdf_1_1core_1_1_data.html#a09fb0c06a654f82bb238e6a148816b3e">cdf::core::Data::push_back</a></div><div class="ttdeci">void push_back(Row &amp;row)</div><div class="ttdoc">Adds a new row to the dataset.</div><div class="ttdef"><b>Definition</b> data.hpp:436</div></div>
-<div class="ttc" id="aclasscdf_1_1core_1_1_data_html_a13249fb452496a8dfda61311cd2175b1"><div class="ttname"><a href="classcdf_1_1core_1_1_data.html#a13249fb452496a8dfda61311cd2175b1">cdf::core::Data::shape</a></div><div class="ttdeci">std::pair&lt; int, int &gt; shape()</div><div class="ttdoc">Returns the shape of the dataset as a pair of (rows, columns).</div><div class="ttdef"><b>Definition</b> data.hpp:414</div></div>
-<div class="ttc" id="aclasscdf_1_1core_1_1_data_html_a43d59c4fc9ab5a05042c3efb002d95ec"><div class="ttname"><a href="classcdf_1_1core_1_1_data.html#a43d59c4fc9ab5a05042c3efb002d95ec">cdf::core::Data::size</a></div><div class="ttdeci">size_t size()</div><div class="ttdoc">Returns the number of rows in the data.</div><div class="ttdef"><b>Definition</b> data.hpp:407</div></div>
+<div class="ttc" id="aclasscdf_1_1core_1_1_data_html"><div class="ttname"><a href="classcdf_1_1core_1_1_data.html">cdf::core::Data</a></div><div class="ttdoc">Represents a collection of rows of data, akin to a 2D matrix or dataframe.</div><div class="ttdef"><b>Definition</b> data.hpp:416</div></div>
+<div class="ttc" id="aclasscdf_1_1core_1_1_data_html_a09fb0c06a654f82bb238e6a148816b3e"><div class="ttname"><a href="classcdf_1_1core_1_1_data.html#a09fb0c06a654f82bb238e6a148816b3e">cdf::core::Data::push_back</a></div><div class="ttdeci">void push_back(Row &amp;row)</div><div class="ttdoc">Adds a new row to the dataset.</div><div class="ttdef"><b>Definition</b> data.hpp:466</div></div>
+<div class="ttc" id="aclasscdf_1_1core_1_1_data_html_a13249fb452496a8dfda61311cd2175b1"><div class="ttname"><a href="classcdf_1_1core_1_1_data.html#a13249fb452496a8dfda61311cd2175b1">cdf::core::Data::shape</a></div><div class="ttdeci">std::pair&lt; int, int &gt; shape()</div><div class="ttdoc">Returns the shape of the dataset as a pair of (rows, columns).</div><div class="ttdef"><b>Definition</b> data.hpp:444</div></div>
+<div class="ttc" id="aclasscdf_1_1core_1_1_data_html_a43d59c4fc9ab5a05042c3efb002d95ec"><div class="ttname"><a href="classcdf_1_1core_1_1_data.html#a43d59c4fc9ab5a05042c3efb002d95ec">cdf::core::Data::size</a></div><div class="ttdeci">size_t size()</div><div class="ttdoc">Returns the number of rows in the data.</div><div class="ttdef"><b>Definition</b> data.hpp:437</div></div>
 <div class="ttc" id="aclasscdf_1_1core_1_1_row_html"><div class="ttname"><a href="classcdf_1_1core_1_1_row.html">cdf::core::Row</a></div><div class="ttdoc">Represents a single row of data.</div><div class="ttdef"><b>Definition</b> data.hpp:19</div></div>
 <div class="ttc" id="aclasscdf_1_1core_1_1_series_html"><div class="ttname"><a href="classcdf_1_1core_1_1_series.html">cdf::core::Series</a></div><div class="ttdoc">A class that represents a series of heterogeneous data values and provides comparison utilities.</div><div class="ttdef"><b>Definition</b> data.hpp:65</div></div>
+<div class="ttc" id="adata_8hpp_html"><div class="ttname"><a href="data_8hpp.html">data.hpp</a></div></div>
+<div class="ttc" id="anamespacecdf_html"><div class="ttname"><a href="namespacecdf.html">cdf</a></div><div class="ttdef"><b>Definition</b> data.hpp:9</div></div>
+<div class="ttc" id="anamespacecdf_html_ad522ec371aba2fa592c26942297b148f"><div class="ttname"><a href="namespacecdf.html#ad522ec371aba2fa592c26942297b148f">cdf::tabulate</a></div><div class="ttdeci">void tabulate(std::vector&lt; std::string &gt; headers, std::vector&lt; core::Row &gt; rows)</div><div class="ttdef"><b>Definition</b> viz.hpp:51</div></div>
+<div class="ttc" id="autils_8hpp_html"><div class="ttname"><a href="utils_8hpp.html">utils.hpp</a></div></div>
+<div class="ttc" id="autils_8hpp_html_a3d933a02e02445d73e03a4423e97ca93"><div class="ttname"><a href="utils_8hpp.html#a3d933a02e02445d73e03a4423e97ca93">slice</a></div><div class="ttdeci">std::vector&lt; T &gt; slice(const std::vector&lt; T &gt; &amp;vec, int start, int end)</div><div class="ttdoc">Extracts a subvector from the given vector based on the specified start and end indices.</div><div class="ttdef"><b>Definition</b> utils.hpp:23</div></div>
+<div class="ttc" id="aviz_8hpp_html"><div class="ttname"><a href="viz_8hpp.html">viz.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dataframe_8hpp.html">dataframe.hpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>
