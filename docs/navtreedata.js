@@ -26,12 +26,28 @@ var NAVTREE =
 [
   [ "CDF - C++ DataFrame", "index.html", [
     [ "INSTALLATION", "index.html#autotoc_md1", null ],
+    [ "QUICKSTART", "index.html#autotoc_md3", [
+      [ "Example - 1 : Loading Data into DataFrame", "index.html#autotoc_md4", [
+        [ "From Raw Data", "index.html#autotoc_md5", null ],
+        [ "From CSV Files", "index.html#autotoc_md6", null ],
+        [ "Check Data Shape", "index.html#autotoc_md7", null ],
+        [ "Show top N rows", "index.html#autotoc_md8", null ],
+        [ "Show Last N rows", "index.html#autotoc_md9", null ]
+      ] ],
+      [ "Example - 2 : Select required columns or rows", "index.html#autotoc_md11", [
+        [ "Select Random Rows by their Indexes", "index.html#autotoc_md12", null ],
+        [ "Select Random Columns", "index.html#autotoc_md13", null ],
+        [ "Select a range of Rows and Columns", "index.html#autotoc_md14", null ]
+      ] ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ]
+        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [

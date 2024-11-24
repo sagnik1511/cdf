@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['nan_0',['NaN',['../classcdf_1_1_na_n.html',1,'cdf::NaN'],['../classcdf_1_1_na_n.html#a5787da1c1f715dc50492e887014874cb',1,'cdf::NaN::NaN()']]]
+  ['example_201_20_3a_20loading_20data_20into_20dataframe_0',['Example - 1 : Loading Data into DataFrame',['../index.html#autotoc_md4',1,'']]],
+  ['example_202_20_3a_20select_20required_20columns_20or_20rows_1',['Example - 2 : Select required columns or rows',['../index.html#autotoc_md11',1,'']]]
 ];

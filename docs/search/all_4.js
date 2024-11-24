@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['filter_0',['filter',['../classcdf_1_1_data_frame.html#a9028256dc3071be4cea0d4e1faa38e20',1,'cdf::DataFrame']]],
-  ['findmaxlength_1',['findMaxLength',['../namespacecdf.html#ae9fdce5edb8a4c94a9870530c788fa44',1,'cdf']]]
+  ['a_20range_20of_20rows_20and_20columns_0',['Select a range of Rows and Columns',['../index.html#autotoc_md14',1,'']]],
+  ['addhorizontalline_1',['addHorizontalLine',['../namespacecdf.html#a6f4064cc1892c0409068d0b932b38579',1,'cdf']]],
+  ['and_20columns_2',['Select a range of Rows and Columns',['../index.html#autotoc_md14',1,'']]]
 ];

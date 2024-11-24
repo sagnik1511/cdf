@@ -8,6 +8,8 @@
 
 namespace cdf {
 
+enum cdfDTypes { Integer, Double, String };
+
 /**
  * @brief Data types with their rank in order of precedence.
  *

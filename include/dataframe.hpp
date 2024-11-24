@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "data.hpp"
+#include "dtypes.hpp"
 #include "utils.hpp"
 #include "viz.hpp"
 
@@ -21,11 +22,11 @@ namespace cdf {
  * including access to specific rows and columns, viewing the shape, and displaying the head and tail of the data.
  */
 class DataFrame {
-    std::vector<std::string> columns;          /**< Column names in the DataFrame */
     std::map<std::string, int> columnIndexMap; /**< Map to store column names and their respective indices */
     core::Data data;                           /**< Data storage object for rows of the DataFrame */
 
    public:
+    std::vector<std::string> columns; /**< Column names in the DataFrame */
     /**
      * @brief Constructs a DataFrame with optional data and columns.
      * @param data The data object to initialize the DataFrame with (default is an empty Data).
@@ -36,6 +37,48 @@ class DataFrame {
         for (int i = 0; i < columns.size(); i++) {
             columnIndexMap[columns[i]] = i;
         }
+    }
+
+    /**
+     * @brief Constructs a DataFrame with row-wise information, column names and data-types.
+     * @param inputData Vector of Vector of _cdfVal as row-sie information.
+     * @param columns The column names for the DataFrame
+     * @param dataTypes The DataType of the columns.
+     *
+     */
+    DataFrame(std::vector<std::vector<_cdfVal>> inputData, std::vector<std::string> columns,
+              std::vector<cdfDTypes> dataTypes)
+        : columns(columns) {
+        // Update columnIndexMap
+        columnIndexMap.clear();
+        for (int i = 0; i < columns.size(); i++) {
+            columnIndexMap[columns[i]] = i;
+        }
+
+        // Define a blank Data object
+        core::Data tmpData(columns.size());
+
+        // Parse data from inputData and fill as per given data-type
+        for (auto& row : inputData) {
+            std::vector<_cdfVal> tmpRow;
+            for (int i = 0; i < columns.size(); i++) {
+                switch (dataTypes[i]) {
+                    case cdfDTypes::Integer:
+                        tmpRow.push_back(std::stoi(toString(row[i])));
+                        break;
+                    case cdfDTypes::Double:
+                        tmpRow.push_back(std::stod(toString(row[i])));
+                        break;
+                    case cdfDTypes::String:
+                        tmpRow.push_back(toString(row[i]));
+                        break;
+                }
+            }
+            tmpData.push_back(tmpRow);
+        }
+
+        // Push generated data to actual data object
+        data = tmpData;
     }
 
     /**
@@ -138,8 +181,8 @@ class DataFrame {
     /**
      * @brief Retrieves a slice of the DataFrame by row and column index.
      *
-     * @param startIndex The starting row index (default is 0).
-     * @param endIndex The ending row index (default is -1, which indicates all rows up to the end).
+     * @param startRowIndex The starting row index (default is 0).
+     * @param endRowIndex The ending row index (default is -1, which indicates all rows up to the end).
      * @param startColumnName The starting column name for slicing (default is the first column).
      * @param endColumnName The ending column name for slicing (default is the last column).
      * @return A new DataFrame containing the specified slice of data.
@@ -148,7 +191,7 @@ class DataFrame {
      * @throws std::invalid_argument If the start column index is greater than the end column index.
      * @throws std::out_of_range If the row indices are out of the DataFrame's range.
      */
-    const DataFrame iloc(size_t startIndex = 0, size_t endIndex = -1, std::string startColumnName = "",
+    const DataFrame iloc(size_t startRowIndex = 0, size_t endRowIndex = -1, std::string startColumnName = "",
                          std::string endColumnName = "") {
         if (startColumnName == "") {
             startColumnName = columns[0];
@@ -157,8 +200,8 @@ class DataFrame {
             endColumnName = columns[columns.size() - 1];
         }
 
-        if (endIndex == -1) {
-            endIndex = data.size() - 1;
+        if (endRowIndex == -1) {
+            endRowIndex = data.size() - 1;
         }
 
         if (columnIndexMap.find(startColumnName) == columnIndexMap.end() ||
@@ -166,29 +209,30 @@ class DataFrame {
             throw std::runtime_error("[cdf][DataFrame] Column Name Not Found!");
         }
 
-        int startIdx = columnIndexMap[startColumnName];
-        int endIdx = columnIndexMap[endColumnName];
+        int startColIdx = columnIndexMap[startColumnName];
+        int endColIdx = columnIndexMap[endColumnName];
 
-        if (startIdx > endIdx) {
+        if (startColIdx > endColIdx) {
             throw std::invalid_argument("[cdf][DataFrame] Start Column should be at lower index than End Column");
         }
 
-        if (startIndex < 0 || endIndex >= data.size()) {
+        if (startRowIndex < 0 || endRowIndex >= data.size()) {
             throw std::out_of_range("[cdf][DataFrame] Indices are out of range!");
         }
 
-        core::Data tmpData(endIdx - startIdx + 1);
-        for (int i = startIndex; i <= endIndex; i++) {
+        core::Data tmpData(endColIdx - startColIdx + 1);
+        for (int i = startRowIndex; i <= endRowIndex; i++) {
             core::Row _row(data[i]);
             std::vector<_cdfVal> tmpRow;
-            for (int j = startIdx; j <= endIdx; j++) {
+            for (int j = startColIdx; j <= endColIdx; j++) {
                 tmpRow.push_back(_row[j]);
             }
             core::Row newRow(tmpRow);
             tmpData.push_back(newRow);
         }
 
-        return DataFrame(tmpData, slice(columns, startIdx, endIdx - startIdx + 1));
+        return DataFrame(tmpData,
+                         std::vector<std::string>(columns.begin() + startColIdx, columns.begin() + endColIdx + 1));
     }
 
     /**

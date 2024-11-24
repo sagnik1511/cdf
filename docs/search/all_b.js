@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['read_5fcsv_0',['read_csv',['../namespacecdf_1_1io.html#a1aeb330ce73be39c6860e3e4680ed58a',1,'cdf::io']]],
-  ['read_5fcsv_5fold_1',['read_csv_old',['../namespacecdf_1_1io.html#afa55f9c9bfe86fa669d71c5ead4c50db',1,'cdf::io']]],
-  ['readme_2emd_2',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['row_3',['Row',['../classcdf_1_1core_1_1_row.html',1,'cdf::core::Row'],['../classcdf_1_1core_1_1_row.html#a00ede3f431d02c9e6c7100a0476955f3',1,'cdf::core::Row::Row()']]],
-  ['rown_4',['rowN',['../classcdf_1_1core_1_1_data.html#aa9c2830071bdde2bba06e74c8c3185f8',1,'cdf::core::Data']]],
-  ['rstrip_5',['rstrip',['../utils_8hpp.html#a50994ab4a7bf7dbd22d91a3df85d4e18',1,'utils.hpp']]]
+  ['iloc_0',['iloc',['../classcdf_1_1_data_frame.html#aa7374057a68fc0fe530bcbe9154885ba',1,'cdf::DataFrame']]],
+  ['indexes_1',['Select Random Rows by their Indexes',['../index.html#autotoc_md12',1,'']]],
+  ['inferandconvert_2',['inferAndConvert',['../utils_8hpp.html#abef528cfc4d3ed95942edacdb401b411',1,'utils.hpp']]],
+  ['input_2ehpp_3',['input.hpp',['../input_8hpp.html',1,'']]],
+  ['installation_4',['INSTALLATION',['../index.html#autotoc_md1',1,'']]],
+  ['integer_5',['Integer',['../namespacecdf.html#ad93ff78808afd0828e473efb6be6a341a141b4026092c1adfccb45caf52d1ab75',1,'cdf']]],
+  ['into_20dataframe_6',['Example - 1 : Loading Data into DataFrame',['../index.html#autotoc_md4',1,'']]],
+  ['isin_7',['isin',['../classcdf_1_1core_1_1_series.html#a21044e7137e3030578ed36fa7a19e1a3',1,'cdf::core::Series']]]
 ];

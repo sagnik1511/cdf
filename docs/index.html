@@ -106,8 +106,162 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 INSTALLATION</h1>
 <p>It is a header only cpp-library supported for C++17 and above.</p>
 <p>Install C++ on <a href="https://stackoverflow.com/questions/46254629/how-can-install-cpp-compiler-on-ubuntu-terminal">linux</a>, you an find alternative solutions for windows and MacOS similarly on the web.</p>
-<p>To start, just clone the repository -</p>
+<p>[1] To start, just clone the repository -</p>
 <div class="fragment"><div class="line">git clone https://github.com/sagnik1511/cdf.git</div>
+</div><!-- fragment --><p> [2] Add the binaries to your include folder. Do a simple cp</p>
+<div class="fragment"><div class="line">cp CDF/include/*hpp &lt;PROJECT_INCLUDE_DIR&gt;</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md3"></a>
+QUICKSTART</h1>
+<p>The cdf API documentation can be accessed from - <a href="https://sagnik1511.github.io/cdf/">CDF-Documentation</a></p>
+<p>The API comprises of simple data objects to use and manipulate data -</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Example - 1 : Loading Data into DataFrame</h2>
+<h3><a class="anchor" id="autotoc_md5"></a>
+From Raw Data</h3>
+<p>To Load Raw Data we have to pass row-wise information, column names and the data-types of the columns.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cdf_8hpp.html">include/cdf.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    std::vector&lt;std::vector&lt;_cdfVal&gt;&gt; data({{1, 25.5, <span class="stringliteral">&quot;Alice&quot;</span>}, {2, <span class="stringliteral">&quot;22.7&quot;</span>, <span class="stringliteral">&quot;Bob&quot;</span>}});</div>
+<div class="line">    std::vector&lt;std::string&gt; columnNames = {<span class="stringliteral">&quot;ID&quot;</span>, <span class="stringliteral">&quot;Age&quot;</span>, <span class="stringliteral">&quot;Name&quot;</span>};</div>
+<div class="line">    std::vector&lt;cdf::cdfDTypes&gt; dTypes = {<a class="code hl_enumvalue" href="namespacecdf.html#ad93ff78808afd0828e473efb6be6a341a141b4026092c1adfccb45caf52d1ab75">cdf::cdfDTypes::Integer</a>, <a class="code hl_enumvalue" href="namespacecdf.html#ad93ff78808afd0828e473efb6be6a341adfcdc5045fc78b52e38a5cf2417ad76c">cdf::cdfDTypes::Double</a>, <a class="code hl_enumvalue" href="namespacecdf.html#ad93ff78808afd0828e473efb6be6a341a8a73b474cf41d55c107dd014a4a180fc">cdf::cdfDTypes::String</a>};</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classcdf_1_1_data_frame.html">cdf::DataFrame</a> df(data, columnNames, dTypes);</div>
+<div class="line">    df.head();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="acdf_8hpp_html"><div class="ttname"><a href="cdf_8hpp.html">cdf.hpp</a></div></div>
+<div class="ttc" id="aclasscdf_1_1_data_frame_html"><div class="ttname"><a href="classcdf_1_1_data_frame.html">cdf::DataFrame</a></div><div class="ttdoc">Represents a data structure similar to a table with rows and columns.</div><div class="ttdef"><b>Definition</b> dataframe.hpp:24</div></div>
+<div class="ttc" id="anamespacecdf_html_ad93ff78808afd0828e473efb6be6a341a141b4026092c1adfccb45caf52d1ab75"><div class="ttname"><a href="namespacecdf.html#ad93ff78808afd0828e473efb6be6a341a141b4026092c1adfccb45caf52d1ab75">cdf::Integer</a></div><div class="ttdeci">@ Integer</div><div class="ttdef"><b>Definition</b> dtypes.hpp:11</div></div>
+<div class="ttc" id="anamespacecdf_html_ad93ff78808afd0828e473efb6be6a341a8a73b474cf41d55c107dd014a4a180fc"><div class="ttname"><a href="namespacecdf.html#ad93ff78808afd0828e473efb6be6a341a8a73b474cf41d55c107dd014a4a180fc">cdf::String</a></div><div class="ttdeci">@ String</div><div class="ttdef"><b>Definition</b> dtypes.hpp:11</div></div>
+<div class="ttc" id="anamespacecdf_html_ad93ff78808afd0828e473efb6be6a341adfcdc5045fc78b52e38a5cf2417ad76c"><div class="ttname"><a href="namespacecdf.html#ad93ff78808afd0828e473efb6be6a341adfcdc5045fc78b52e38a5cf2417ad76c">cdf::Double</a></div><div class="ttdeci">@ Double</div><div class="ttdef"><b>Definition</b> dtypes.hpp:11</div></div>
+</div><!-- fragment --><p>Expected Output -</p>
+<div class="fragment"><div class="line">+----+------+-------+</div>
+<div class="line">| ID | Age  | Name  |</div>
+<div class="line">+----+------+-------+</div>
+<div class="line">| 1  | 25.5 | Alice |</div>
+<div class="line">+----+------+-------+</div>
+<div class="line">| 2  | 22.7 | Bob   |</div>
+<div class="line">+----+------+-------+</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md6"></a>
+From CSV Files</h3>
+<p>Please Note, we have to pass the absolute path of the CSV file.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cdf_8hpp.html">include/cdf.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <a class="code hl_class" href="classcdf_1_1_data_frame.html">cdf::DataFrame</a> df = <a class="code hl_function" href="namespacecdf_1_1io.html#a1aeb330ce73be39c6860e3e4680ed58a">cdf::io::read_csv</a>(<span class="stringliteral">&quot;sample_data.csv&quot;</span>);</div>
+<div class="line">    df.<a class="code hl_function" href="classcdf_1_1_data_frame.html#a76164c5a52888ee648ee484c708bb799">head</a>();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclasscdf_1_1_data_frame_html_a76164c5a52888ee648ee484c708bb799"><div class="ttname"><a href="classcdf_1_1_data_frame.html#a76164c5a52888ee648ee484c708bb799">cdf::DataFrame::head</a></div><div class="ttdeci">void head(int numRows=5)</div><div class="ttdoc">Displays the first few rows of the DataFrame.</div><div class="ttdef"><b>Definition</b> dataframe.hpp:94</div></div>
+<div class="ttc" id="anamespacecdf_1_1io_html_a1aeb330ce73be39c6860e3e4680ed58a"><div class="ttname"><a href="namespacecdf_1_1io.html#a1aeb330ce73be39c6860e3e4680ed58a">cdf::io::read_csv</a></div><div class="ttdeci">DataFrame read_csv(std::string csvFilePath, char delimiter=',', int header=0, std::vector&lt; std::string &gt; names={})</div><div class="ttdoc">Reads a CSV file and loads data into a cdf::DataFrame.</div><div class="ttdef"><b>Definition</b> input.hpp:156</div></div>
+</div><!-- fragment --><p>Expected Output -</p>
+<div class="fragment"><div class="line">+----+-------+-----+---------------+---------+-------------+--------+</div>
+<div class="line">| ID | Name  | Age | City          | Country | Department  | Salary |</div>
+<div class="line">+----+-------+-----+---------------+---------+-------------+--------+</div>
+<div class="line">| 1  | Alice | 25  | New York      | USA     | Engineering | 75000  |</div>
+<div class="line">+----+-------+-----+---------------+---------+-------------+--------+</div>
+<div class="line">| 2  | Bob   | 30  | Los Angeles   | USA     | Marketing   |        |</div>
+<div class="line">+----+-------+-----+---------------+---------+-------------+--------+</div>
+<div class="line">| 3  | Carol | 22  | Chicago       |         | HR          | 50000  |</div>
+<div class="line">+----+-------+-----+---------------+---------+-------------+--------+</div>
+<div class="line">| 4  | David | 28  | San Francisco | USA     | Engineering | 95000  |</div>
+<div class="line">+----+-------+-----+---------------+---------+-------------+--------+</div>
+<div class="line">| 5  | Eve   | 35  |               | USA     | Sales       | 65000  |</div>
+<div class="line">+----+-------+-----+---------------+---------+-------------+--------+</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
+Check Data Shape</h3>
+<div class="fragment"><div class="line">std::pair&lt;int, int&gt; shape = df.<a class="code hl_function" href="classcdf_1_1_data_frame.html#a8415194fb82967997caf1f579d5f0c9d">shape</a>();</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;DataFrame Shape -&gt; &quot;</span> &lt;&lt; shape.first &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; shape.second &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="ttc" id="aclasscdf_1_1_data_frame_html_a8415194fb82967997caf1f579d5f0c9d"><div class="ttname"><a href="classcdf_1_1_data_frame.html#a8415194fb82967997caf1f579d5f0c9d">cdf::DataFrame::shape</a></div><div class="ttdeci">std::pair&lt; int, int &gt; shape()</div><div class="ttdoc">Gets the shape of the DataFrame.</div><div class="ttdef"><b>Definition</b> dataframe.hpp:88</div></div>
+</div><!-- fragment --><p>Expected Output -</p>
+<div class="fragment"><div class="line">DataFrame Shape -&gt; 20, 7</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md8"></a>
+Show top N rows</h3>
+<p><a class="el" href="classcdf_1_1_data_frame.html#a76164c5a52888ee648ee484c708bb799" title="Displays the first few rows of the DataFrame.">cdf::DataFrame::head()</a> shows top N rows, examples are shown above only</p>
+<div class="fragment"><div class="line">df.<a class="code hl_function" href="classcdf_1_1_data_frame.html#a76164c5a52888ee648ee484c708bb799">head</a>();</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md9"></a>
+Show Last N rows</h3>
+<p>While head method shows first N rows, <code><a class="el" href="classcdf_1_1_data_frame.html#a05cb0e25943e11832b97519f896f3c33" title="Displays the last few rows of the DataFrame.">cdf::DataFrame::tail()</a></code> shows last N rows</p>
+<div class="fragment"><div class="line">df.<a class="code hl_function" href="classcdf_1_1_data_frame.html#a05cb0e25943e11832b97519f896f3c33">tail</a>();</div>
+<div class="ttc" id="aclasscdf_1_1_data_frame_html_a05cb0e25943e11832b97519f896f3c33"><div class="ttname"><a href="classcdf_1_1_data_frame.html#a05cb0e25943e11832b97519f896f3c33">cdf::DataFrame::tail</a></div><div class="ttdeci">void tail(int numRows=5)</div><div class="ttdoc">Displays the last few rows of the DataFrame.</div><div class="ttdef"><b>Definition</b> dataframe.hpp:107</div></div>
+</div><!-- fragment --><p>Expected Output -</p>
+<div class="fragment"><div class="line">+----+--------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| ID | Name   | Age | City    | Country | Department  | Salary |</div>
+<div class="line">+----+--------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| 16 | Paul   | 34  | Atlanta | USA     | Sales       | 69000  |</div>
+<div class="line">+----+--------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| 17 | Quincy | 38  | Denver  | USA     | Engineering | 90000  |</div>
+<div class="line">+----+--------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| 18 | Rachel |     | Boston  | USA     | HR          | 52000  |</div>
+<div class="line">+----+--------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| 19 | Samuel | 28  | Seattle | USA     | Marketing   | 68000  |</div>
+<div class="line">+----+--------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| 20 | Tina   | 33  | Chicago | USA     | Sales       | 73000  |</div>
+<div class="line">+----+--------+-----+---------+---------+-------------+--------+</div>
+</div><!-- fragment --><hr  />
+<h2><a class="anchor" id="autotoc_md11"></a>
+Example - 2 : Select required columns or rows</h2>
+<h3><a class="anchor" id="autotoc_md12"></a>
+Select Random Rows by their Indexes</h3>
+<div class="fragment"><div class="line"><span class="comment">// Filter Selected Rows</span></div>
+<div class="line">std::vector&lt;int&gt; indexes = {2, 4, 6, 5};</div>
+<div class="line">df = df.<a class="code hl_function" href="classcdf_1_1_data_frame.html#a9028256dc3071be4cea0d4e1faa38e20">filter</a>(indexes);</div>
+<div class="line">df.<a class="code hl_function" href="classcdf_1_1_data_frame.html#a76164c5a52888ee648ee484c708bb799">head</a>();</div>
+<div class="ttc" id="aclasscdf_1_1_data_frame_html_a9028256dc3071be4cea0d4e1faa38e20"><div class="ttname"><a href="classcdf_1_1_data_frame.html#a9028256dc3071be4cea0d4e1faa38e20">cdf::DataFrame::filter</a></div><div class="ttdeci">const DataFrame filter(const std::vector&lt; int &gt; &amp;indexes)</div><div class="ttdoc">Filters rows based on specified row indices.</div><div class="ttdef"><b>Definition</b> dataframe.hpp:246</div></div>
+</div><!-- fragment --><p>Expected Output -</p>
+<div class="fragment"><div class="line">+----+-------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| ID | Name  | Age | City    | Country | Department  | Salary |</div>
+<div class="line">+----+-------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| 3  | Carol | 22  | Chicago |         | HR          | 50000  |</div>
+<div class="line">+----+-------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| 5  | Eve   | 35  |         | USA     | Sales       | 65000  |</div>
+<div class="line">+----+-------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| 7  | Grace | 26  | Miami   | USA     | Engineering | 85000  |</div>
+<div class="line">+----+-------+-----+---------+---------+-------------+--------+</div>
+<div class="line">| 6  | Frank | 40  | Boston  | USA     |             | 70000  |</div>
+<div class="line">+----+-------+-----+---------+---------+-------------+--------+</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md13"></a>
+Select Random Columns</h3>
+<div class="fragment"><div class="line"><span class="comment">// Filter Selected Columns</span></div>
+<div class="line">std::vector&lt;std::string&gt; filteredColumns = {<span class="stringliteral">&quot;ID&quot;</span>, <span class="stringliteral">&quot;Age&quot;</span>, <span class="stringliteral">&quot;Name&quot;</span>};</div>
+<div class="line">df = df[filteredColumns];</div>
+<div class="line">df.<a class="code hl_function" href="classcdf_1_1_data_frame.html#a76164c5a52888ee648ee484c708bb799">head</a>();</div>
+</div><!-- fragment --><p>Expected Output -</p>
+<div class="fragment"><div class="line">+----+-----+-------+</div>
+<div class="line">| ID | Age | Name  |</div>
+<div class="line">+----+-----+-------+</div>
+<div class="line">| 1  | 25  | Alice |</div>
+<div class="line">+----+-----+-------+</div>
+<div class="line">| 2  | 30  | Bob   |</div>
+<div class="line">+----+-----+-------+</div>
+<div class="line">| 3  | 22  | Carol |</div>
+<div class="line">+----+-----+-------+</div>
+<div class="line">| 4  | 28  | David |</div>
+<div class="line">+----+-----+-------+</div>
+<div class="line">| 5  | 35  | Eve   |</div>
+<div class="line">+----+-----+-------+</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md14"></a>
+Select a range of Rows and Columns</h3>
+<div class="fragment"><div class="line"><span class="comment">// Filter Selected Row and Column Ranges</span></div>
+<div class="line">df = df.<a class="code hl_function" href="classcdf_1_1_data_frame.html#aa7374057a68fc0fe530bcbe9154885ba">iloc</a>(10, 13, <span class="stringliteral">&quot;City&quot;</span>, <span class="stringliteral">&quot;Department&quot;</span>);</div>
+<div class="line">df.<a class="code hl_function" href="classcdf_1_1_data_frame.html#a76164c5a52888ee648ee484c708bb799">head</a>();</div>
+<div class="ttc" id="aclasscdf_1_1_data_frame_html_aa7374057a68fc0fe530bcbe9154885ba"><div class="ttname"><a href="classcdf_1_1_data_frame.html#aa7374057a68fc0fe530bcbe9154885ba">cdf::DataFrame::iloc</a></div><div class="ttdeci">const DataFrame iloc(size_t startRowIndex=0, size_t endRowIndex=-1, std::string startColumnName=&quot;&quot;, std::string endColumnName=&quot;&quot;)</div><div class="ttdoc">Retrieves a slice of the DataFrame by row and column index.</div><div class="ttdef"><b>Definition</b> dataframe.hpp:194</div></div>
+</div><!-- fragment --><p>Expected Output -</p>
+<div class="fragment"><div class="line">+----------+---------+-------------+</div>
+<div class="line">| City     | Country | Department  |</div>
+<div class="line">+----------+---------+-------------+</div>
+<div class="line">| Austin   | USA     | Engineering |</div>
+<div class="line">+----------+---------+-------------+</div>
+<div class="line">| Dallas   | USA     | Sales       |</div>
+<div class="line">+----------+---------+-------------+</div>
+<div class="line">| Orlando  | USA     | HR          |</div>
+<div class="line">+----------+---------+-------------+</div>
+<div class="line">| San Jose | USA     | Marketing   |</div>
+<div class="line">+----------+---------+-------------+</div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

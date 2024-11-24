@@ -99,6 +99,7 @@ $(function(){initNavTree('classcdf_1_1_data_frame.html',''); initResizable(true)
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classcdf_1_1_data_frame-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">cdf::DataFrame Class Reference</div></div>
 </div><!--header-->
@@ -111,9 +112,12 @@ $(function(){initNavTree('classcdf_1_1_data_frame.html',''); initResizable(true)
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a816eb538688f1b2840cfa21f1dff9e2d" id="r_a816eb538688f1b2840cfa21f1dff9e2d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a816eb538688f1b2840cfa21f1dff9e2d">DataFrame</a> (<a class="el" href="classcdf_1_1core_1_1_data.html">core::Data</a> data={}, std::vector&lt; std::string &gt; columns={})</td></tr>
+<tr class="memitem:a816eb538688f1b2840cfa21f1dff9e2d" id="r_a816eb538688f1b2840cfa21f1dff9e2d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a816eb538688f1b2840cfa21f1dff9e2d">DataFrame</a> (<a class="el" href="classcdf_1_1core_1_1_data.html">core::Data</a> data={}, std::vector&lt; std::string &gt; <a class="el" href="#ae5cc58e525c48b047a39eded21d49f5b">columns</a>={})</td></tr>
 <tr class="memdesc:a816eb538688f1b2840cfa21f1dff9e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> with optional data and columns.  <br /></td></tr>
 <tr class="separator:a816eb538688f1b2840cfa21f1dff9e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad04ddd568125260ebbe5d4087a3be829" id="r_ad04ddd568125260ebbe5d4087a3be829"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad04ddd568125260ebbe5d4087a3be829">DataFrame</a> (std::vector&lt; std::vector&lt; <a class="el" href="dtypes_8hpp.html#a3e46213482851f5e59c8bdcc806309b6">_cdfVal</a> &gt; &gt; inputData, std::vector&lt; std::string &gt; <a class="el" href="#ae5cc58e525c48b047a39eded21d49f5b">columns</a>, std::vector&lt; <a class="el" href="namespacecdf.html#ad93ff78808afd0828e473efb6be6a341">cdfDTypes</a> &gt; dataTypes)</td></tr>
+<tr class="memdesc:ad04ddd568125260ebbe5d4087a3be829"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> with row-wise information, column names and data-types.  <br /></td></tr>
+<tr class="separator:ad04ddd568125260ebbe5d4087a3be829"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8415194fb82967997caf1f579d5f0c9d" id="r_a8415194fb82967997caf1f579d5f0c9d"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8415194fb82967997caf1f579d5f0c9d">shape</a> ()</td></tr>
 <tr class="memdesc:a8415194fb82967997caf1f579d5f0c9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the shape of the <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a>.  <br /></td></tr>
 <tr class="separator:a8415194fb82967997caf1f579d5f0c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,19 +136,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8eedc66fc964540d6401c907c3d4adc4" id="r_a8eedc66fc964540d6401c907c3d4adc4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classcdf_1_1_data_frame.html">DataFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8eedc66fc964540d6401c907c3d4adc4">operator[]</a> (const std::vector&lt; std::string &gt; fields)</td></tr>
 <tr class="memdesc:a8eedc66fc964540d6401c907c3d4adc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selects particular columns.  <br /></td></tr>
 <tr class="separator:a8eedc66fc964540d6401c907c3d4adc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a164f193a292b413d20057b9eb9ef9c56" id="r_a164f193a292b413d20057b9eb9ef9c56"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classcdf_1_1_data_frame.html">DataFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a164f193a292b413d20057b9eb9ef9c56">iloc</a> (size_t startIndex=0, size_t endIndex=-1, std::string startColumnName=&quot;&quot;, std::string endColumnName=&quot;&quot;)</td></tr>
-<tr class="memdesc:a164f193a292b413d20057b9eb9ef9c56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a slice of the <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> by row and column index.  <br /></td></tr>
-<tr class="separator:a164f193a292b413d20057b9eb9ef9c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7374057a68fc0fe530bcbe9154885ba" id="r_aa7374057a68fc0fe530bcbe9154885ba"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classcdf_1_1_data_frame.html">DataFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7374057a68fc0fe530bcbe9154885ba">iloc</a> (size_t startRowIndex=0, size_t endRowIndex=-1, std::string startColumnName=&quot;&quot;, std::string endColumnName=&quot;&quot;)</td></tr>
+<tr class="memdesc:aa7374057a68fc0fe530bcbe9154885ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a slice of the <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> by row and column index.  <br /></td></tr>
+<tr class="separator:aa7374057a68fc0fe530bcbe9154885ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9028256dc3071be4cea0d4e1faa38e20" id="r_a9028256dc3071be4cea0d4e1faa38e20"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classcdf_1_1_data_frame.html">DataFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9028256dc3071be4cea0d4e1faa38e20">filter</a> (const std::vector&lt; int &gt; &amp;indexes)</td></tr>
 <tr class="memdesc:a9028256dc3071be4cea0d4e1faa38e20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters rows based on specified row indices.  <br /></td></tr>
 <tr class="separator:a9028256dc3071be4cea0d4e1faa38e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ae5cc58e525c48b047a39eded21d49f5b" id="r_ae5cc58e525c48b047a39eded21d49f5b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5cc58e525c48b047a39eded21d49f5b">columns</a></td></tr>
+<tr class="separator:ae5cc58e525c48b047a39eded21d49f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a data structure similar to a table with rows and columns. </p>
 <p>The <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> class allows for operations similar to a <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> in Python's Pandas library, including access to specific rows and columns, viewing the shape, and displaying the head and tail of the data. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a816eb538688f1b2840cfa21f1dff9e2d" name="a816eb538688f1b2840cfa21f1dff9e2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a816eb538688f1b2840cfa21f1dff9e2d">&#9670;&#160;</a></span>DataFrame()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a816eb538688f1b2840cfa21f1dff9e2d">&#9670;&#160;</a></span>DataFrame() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,12 +197,76 @@ Public Member Functions</h2></td></tr>
 <area shape="rect" title="Constructs a DataFrame with optional data and columns." alt="" coords="452,55,637,80"/>
 <area shape="rect" href="classcdf_1_1_data_frame.html#a9028256dc3071be4cea0d4e1faa38e20" title="Filters rows based on specified row indices." alt="" coords="244,5,389,31"/>
 <area shape="poly" title=" " alt="" coords="466,53,379,34,380,29,467,48"/>
-<area shape="rect" href="classcdf_1_1_data_frame.html#a164f193a292b413d20057b9eb9ef9c56" title="Retrieves a slice of the DataFrame by row and column index." alt="" coords="246,55,386,80"/>
+<area shape="rect" href="classcdf_1_1_data_frame.html#aa7374057a68fc0fe530bcbe9154885ba" title="Retrieves a slice of the DataFrame by row and column index." alt="" coords="246,55,386,80"/>
 <area shape="poly" title=" " alt="" coords="436,70,387,70,387,65,436,65"/>
 <area shape="rect" href="classcdf_1_1_data_frame.html#a8eedc66fc964540d6401c907c3d4adc4" title="Selects particular columns." alt="" coords="229,104,404,130"/>
 <area shape="poly" title=" " alt="" coords="467,87,380,106,379,101,466,82"/>
 <area shape="rect" href="classcdf_1_1_data_frame.html#a56e7d99fa96821a9fca633afe42b0acf" title="Retrieves a dataframe of the expected rows." alt="" coords="5,5,181,31"/>
 <area shape="poly" title=" " alt="" coords="228,21,181,21,181,16,228,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad04ddd568125260ebbe5d4087a3be829" name="ad04ddd568125260ebbe5d4087a3be829"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad04ddd568125260ebbe5d4087a3be829">&#9670;&#160;</a></span>DataFrame() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cdf::DataFrame::DataFrame </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::vector&lt; <a class="el" href="dtypes_8hpp.html#a3e46213482851f5e59c8bdcc806309b6">_cdfVal</a> &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em>inputData</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt;</td>          <td class="paramname"><span class="paramname"><em>columns</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="namespacecdf.html#ad93ff78808afd0828e473efb6be6a341">cdfDTypes</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>dataTypes</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> with row-wise information, column names and data-types. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inputData</td><td>Vector of Vector of _cdfVal as row-sie information. </td></tr>
+    <tr><td class="paramname">columns</td><td>The column names for the <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> </td></tr>
+    <tr><td class="paramname">dataTypes</td><td>The DataType of the columns. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="classcdf_1_1_data_frame_ad04ddd568125260ebbe5d4087a3be829_cgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_ad04ddd568125260ebbe5d4087a3be829_cgraph" alt=""/></div>
+<map name="aclasscdf_1_1_data_frame_ad04ddd568125260ebbe5d4087a3be829_cgraph" id="aclasscdf_1_1_data_frame_ad04ddd568125260ebbe5d4087a3be829_cgraph">
+<area shape="rect" title="Constructs a DataFrame with row&#45;wise information, column names and data&#45;types." alt="" coords="5,31,191,56"/>
+<area shape="rect" href="classcdf_1_1core_1_1_data.html#a09fb0c06a654f82bb238e6a148816b3e" title="Adds a new row to the dataset." alt="" coords="239,5,418,31"/>
+<area shape="poly" title=" " alt="" coords="191,31,223,27,223,32,192,36"/>
+<area shape="rect" href="utils_8hpp.html#aca47bd4d145fc0852a96502e7e761bdb" title="Converts variant objects to string." alt="" coords="295,55,362,80"/>
+<area shape="poly" title=" " alt="" coords="192,51,280,60,280,65,191,56"/>
+<area shape="rect" href="classcdf_1_1core_1_1_row.html#a064af9948b9364c4017e05f69c15a842" title="Returns the size of the row." alt="" coords="466,5,605,31"/>
+<area shape="poly" title=" " alt="" coords="418,16,450,16,450,21,418,21"/>
+<area shape="rect" href="utils_8hpp.html#a24d4d11d0a42c13d862dd0ce9ba87ed8" title="Prepares double variable to string without truncating precision It is assumed that values will hold 1..." alt="" coords="507,55,564,80"/>
+<area shape="poly" title=" " alt="" coords="362,65,492,65,492,70,362,70"/>
+<area shape="rect" href="utils_8hpp.html#a50994ab4a7bf7dbd22d91a3df85d4e18" title="Removes trailing characters." alt="" coords="653,55,704,80"/>
+<area shape="poly" title=" " alt="" coords="565,65,638,65,638,70,565,70"/>
 </map>
 </div>
 
@@ -237,11 +310,11 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcdf_1_1_data_frame_a9028256dc3071be4cea0d4e1faa38e20_cgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_a9028256dc3071be4cea0d4e1faa38e20_cgraph" alt=""/></div>
 <map name="aclasscdf_1_1_data_frame_a9028256dc3071be4cea0d4e1faa38e20_cgraph" id="aclasscdf_1_1_data_frame_a9028256dc3071be4cea0d4e1faa38e20_cgraph">
 <area shape="rect" title="Filters rows based on specified row indices." alt="" coords="5,55,151,80"/>
@@ -255,11 +328,11 @@ Public Member Functions</h2></td></tr>
 <area shape="poly" title=" " alt="" coords="381,65,416,65,416,70,381,70"/>
 </map>
 </div>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcdf_1_1_data_frame_a9028256dc3071be4cea0d4e1faa38e20_icgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_a9028256dc3071be4cea0d4e1faa38e20_icgraph" alt=""/></div>
 <map name="aclasscdf_1_1_data_frame_a9028256dc3071be4cea0d4e1faa38e20_icgraph" id="aclasscdf_1_1_data_frame_a9028256dc3071be4cea0d4e1faa38e20_icgraph">
 <area shape="rect" title="Filters rows based on specified row indices." alt="" coords="229,5,374,31"/>
@@ -300,11 +373,11 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcdf_1_1_data_frame_a76164c5a52888ee648ee484c708bb799_cgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_a76164c5a52888ee648ee484c708bb799_cgraph" alt=""/></div>
 <map name="aclasscdf_1_1_data_frame_a76164c5a52888ee648ee484c708bb799_cgraph" id="aclasscdf_1_1_data_frame_a76164c5a52888ee648ee484c708bb799_cgraph">
 <area shape="rect" title="Displays the first few rows of the DataFrame." alt="" coords="5,31,154,56"/>
@@ -328,8 +401,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a164f193a292b413d20057b9eb9ef9c56" name="a164f193a292b413d20057b9eb9ef9c56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a164f193a292b413d20057b9eb9ef9c56">&#9670;&#160;</a></span>iloc()</h2>
+<a id="aa7374057a68fc0fe530bcbe9154885ba" name="aa7374057a68fc0fe530bcbe9154885ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7374057a68fc0fe530bcbe9154885ba">&#9670;&#160;</a></span>iloc()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -340,12 +413,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">const <a class="el" href="classcdf_1_1_data_frame.html">DataFrame</a> cdf::DataFrame::iloc </td>
           <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>startIndex</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>startRowIndex</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>endIndex</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>endRowIndex</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -368,8 +441,8 @@ Public Member Functions</h2></td></tr>
 <p>Retrieves a slice of the <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> by row and column index. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">startIndex</td><td>The starting row index (default is 0). </td></tr>
-    <tr><td class="paramname">endIndex</td><td>The ending row index (default is -1, which indicates all rows up to the end). </td></tr>
+    <tr><td class="paramname">startRowIndex</td><td>The starting row index (default is 0). </td></tr>
+    <tr><td class="paramname">endRowIndex</td><td>The ending row index (default is -1, which indicates all rows up to the end). </td></tr>
     <tr><td class="paramname">startColumnName</td><td>The starting column name for slicing (default is the first column). </td></tr>
     <tr><td class="paramname">endColumnName</td><td>The ending column name for slicing (default is the last column). </td></tr>
   </table>
@@ -384,22 +457,20 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="classcdf_1_1_data_frame_a164f193a292b413d20057b9eb9ef9c56_cgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_a164f193a292b413d20057b9eb9ef9c56_cgraph" alt=""/></div>
-<map name="aclasscdf_1_1_data_frame_a164f193a292b413d20057b9eb9ef9c56_cgraph" id="aclasscdf_1_1_data_frame_a164f193a292b413d20057b9eb9ef9c56_cgraph">
-<area shape="rect" title="Retrieves a slice of the DataFrame by row and column index." alt="" coords="5,80,146,106"/>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="classcdf_1_1_data_frame_aa7374057a68fc0fe530bcbe9154885ba_cgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_aa7374057a68fc0fe530bcbe9154885ba_cgraph" alt=""/></div>
+<map name="aclasscdf_1_1_data_frame_aa7374057a68fc0fe530bcbe9154885ba_cgraph" id="aclasscdf_1_1_data_frame_aa7374057a68fc0fe530bcbe9154885ba_cgraph">
+<area shape="rect" title="Retrieves a slice of the DataFrame by row and column index." alt="" coords="5,55,146,80"/>
 <area shape="rect" href="classcdf_1_1_data_frame.html#a816eb538688f1b2840cfa21f1dff9e2d" title="Constructs a DataFrame with optional data and columns." alt="" coords="194,5,379,31"/>
-<area shape="poly" title=" " alt="" coords="103,77,193,40,213,33,215,38,195,45,105,82"/>
+<area shape="poly" title=" " alt="" coords="133,51,213,33,214,38,134,57"/>
 <area shape="rect" href="classcdf_1_1core_1_1_data.html#a09fb0c06a654f82bb238e6a148816b3e" title="Adds a new row to the dataset." alt="" coords="197,55,376,80"/>
-<area shape="poly" title=" " alt="" coords="146,82,181,77,182,83,146,87"/>
+<area shape="poly" title=" " alt="" coords="146,65,181,65,181,70,146,70"/>
 <area shape="rect" href="classcdf_1_1core_1_1_data.html#a43d59c4fc9ab5a05042c3efb002d95ec" title="Returns the number of rows in the data." alt="" coords="216,104,356,130"/>
-<area shape="poly" title=" " alt="" coords="146,98,201,104,200,110,146,103"/>
-<area shape="rect" href="utils_8hpp.html#a3d933a02e02445d73e03a4423e97ca93" title="Extracts a subvector from the given vector based on the specified start and end indices." alt="" coords="262,153,310,179"/>
-<area shape="poly" title=" " alt="" coords="106,104,195,140,248,155,246,160,193,145,104,109"/>
+<area shape="poly" title=" " alt="" coords="134,78,214,97,213,102,133,84"/>
 <area shape="rect" href="classcdf_1_1core_1_1_row.html#a064af9948b9364c4017e05f69c15a842" title="Returns the size of the row." alt="" coords="427,55,566,80"/>
 <area shape="poly" title=" " alt="" coords="376,65,411,65,411,70,376,70"/>
 </map>
@@ -445,11 +516,11 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> consisting of the given columns </dd></dl>
-<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcdf_1_1_data_frame_a8eedc66fc964540d6401c907c3d4adc4_cgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_a8eedc66fc964540d6401c907c3d4adc4_cgraph" alt=""/></div>
 <map name="aclasscdf_1_1_data_frame_a8eedc66fc964540d6401c907c3d4adc4_cgraph" id="aclasscdf_1_1_data_frame_a8eedc66fc964540d6401c907c3d4adc4_cgraph">
 <area shape="rect" title="Selects particular columns." alt="" coords="5,55,181,80"/>
@@ -496,11 +567,11 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcdf_1_1_data_frame_af92128e69ce1bee22def08d6501cf5d6_cgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_af92128e69ce1bee22def08d6501cf5d6_cgraph" alt=""/></div>
 <map name="aclasscdf_1_1_data_frame_af92128e69ce1bee22def08d6501cf5d6_cgraph" id="aclasscdf_1_1_data_frame_af92128e69ce1bee22def08d6501cf5d6_cgraph">
 <area shape="rect" title="Returns Series object holidng column values." alt="" coords="5,5,181,31"/>
@@ -541,11 +612,11 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcdf_1_1_data_frame_a56e7d99fa96821a9fca633afe42b0acf_cgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_a56e7d99fa96821a9fca633afe42b0acf_cgraph" alt=""/></div>
 <map name="aclasscdf_1_1_data_frame_a56e7d99fa96821a9fca633afe42b0acf_cgraph" id="aclasscdf_1_1_data_frame_a56e7d99fa96821a9fca633afe42b0acf_cgraph">
 <area shape="rect" title="Retrieves a dataframe of the expected rows." alt="" coords="5,55,181,80"/>
@@ -589,11 +660,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Gets the shape of the <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>A pair representing the number of rows and columns. </dd></dl>
-<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcdf_1_1_data_frame_a8415194fb82967997caf1f579d5f0c9d_cgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_a8415194fb82967997caf1f579d5f0c9d_cgraph" alt=""/></div>
 <map name="aclasscdf_1_1_data_frame_a8415194fb82967997caf1f579d5f0c9d_cgraph" id="aclasscdf_1_1_data_frame_a8415194fb82967997caf1f579d5f0c9d_cgraph">
 <area shape="rect" title="Gets the shape of the DataFrame." alt="" coords="5,5,161,31"/>
@@ -634,11 +705,11 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-10" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classcdf_1_1_data_frame_a05cb0e25943e11832b97519f896f3c33_cgraph.png" border="0" usemap="#aclasscdf_1_1_data_frame_a05cb0e25943e11832b97519f896f3c33_cgraph" alt=""/></div>
 <map name="aclasscdf_1_1_data_frame_a05cb0e25943e11832b97519f896f3c33_cgraph" id="aclasscdf_1_1_data_frame_a05cb0e25943e11832b97519f896f3c33_cgraph">
 <area shape="rect" title="Displays the last few rows of the DataFrame." alt="" coords="5,31,143,56"/>
@@ -659,6 +730,22 @@ Public Member Functions</h2></td></tr>
 <area shape="poly" title=" " alt="" coords="505,114,563,114,563,120,505,120"/>
 </map>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae5cc58e525c48b047a39eded21d49f5b" name="ae5cc58e525c48b047a39eded21d49f5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5cc58e525c48b047a39eded21d49f5b">&#9670;&#160;</a></span>columns</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; cdf::DataFrame::columns</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Column names in the <a class="el" href="classcdf_1_1_data_frame.html" title="Represents a data structure similar to a table with rows and columns.">DataFrame</a> </p>
 
 </div>
 </div>

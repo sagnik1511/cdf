@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['tabulate_0',['tabulate',['../namespacecdf.html#ad522ec371aba2fa592c26942297b148f',1,'cdf']]],
-  ['tail_1',['tail',['../classcdf_1_1_data_frame.html#a05cb0e25943e11832b97519f896f3c33',1,'cdf::DataFrame']]],
-  ['to_5fstring_2',['to_string',['../utils_8hpp.html#a6d674791e90d6df6c8473a89e28ab728',1,'utils.hpp']]],
-  ['tostring_3',['toString',['../utils_8hpp.html#aca47bd4d145fc0852a96502e7e761bdb',1,'utils.hpp']]]
+  ['mean_0',['mean',['../classcdf_1_1core_1_1_series.html#a0f735256a4e47b95c21ff88e392200d7',1,'cdf::core::Series']]],
+  ['median_1',['median',['../classcdf_1_1core_1_1_series.html#a009f4fd8cfd861f11ada0e3a00ea3cbc',1,'cdf::core::Series']]],
+  ['mode_2',['mode',['../classcdf_1_1core_1_1_series.html#a8689430d6f0bc40245395bef944b3e91',1,'cdf::core::Series::mode()'],['../classcdf_1_1core_1_1_series.html#ab7a6886ad902422fff06b713dc61b246',1,'cdf::core::Series::mode()']]]
 ];

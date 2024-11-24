@@ -20,3 +20,6 @@ man/*
 # GraveYard
 dumps/
 bin/
+
+# Example Codes
+examples/
